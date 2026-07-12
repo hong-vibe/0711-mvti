@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MbtiMiniTest from './MbtiMiniTest';
 
 // 16개 MBTI 유형 목록 정의
 const MBTI_LIST = [
@@ -9,19 +10,39 @@ const MBTI_LIST = [
 ];
 
 /**
- * 16개 MBTI 유형 그리드 선택 컴포넌트 (모바일 select 폴백 대응)
+ * 16개 MBTI 유형 그리드 선택 컴포넌트 (약식 진단 테스트 모달 탑재)
  * @param {object} props { value, onChange }
  */
 export default function MbtiGridSelector({ value, onChange }) {
-  
+  const [isTesting, setIsTesting] = useState(false);
+
   const handleSelectChange = (e) => {
     const val = e.target.value;
     onChange(val === 'none' ? null : val);
   };
 
+  const handleTestComplete = (calculatedMbti) => {
+    onChange(calculatedMbti);
+    setIsTesting(false);
+  };
+
+  // 약식 진단 모드 렌더링 분기
+  if (isTesting) {
+    return (
+      <div className="mbti-selector-container">
+        <h3 className="selector-title">MBTI 약식 진단 테스트</h3>
+        <p className="selector-desc">4가지 질문을 통해 당신의 잠재적 성격 유형을 분석해 봅니다.</p>
+        <MbtiMiniTest 
+          onComplete={handleTestComplete} 
+          onCancel={() => setIsTesting(false)} 
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="mbti-selector-container">
-      <h3 className="selector-title">1. 당신의 MBTI를 선택해 주세요</h3>
+      <h3 className="selector-title">3. 당신의 MBTI를 선택해 주세요</h3>
       <p className="selector-desc">
         성격에 따른 미디어 소비 취향 차이(간극)를 학술적으로 대조 분석해 드립니다.
       </p>
@@ -62,6 +83,17 @@ export default function MbtiGridSelector({ value, onChange }) {
         </select>
       </div>
 
+      {/* 약식 진단 진입 단추 제공 */}
+      <div className="mbti-test-entry-area">
+        <button
+          type="button"
+          className="btn-trigger-test"
+          onClick={() => setIsTesting(true)}
+        >
+          💡 내 MBTI를 잘 모릅니다 (약식 테스트로 알아보기)
+        </button>
+      </div>
+
       {/* 모르는 사람을 위한 폴백 버튼 */}
       <div className="mbti-unknown-area">
         <button
@@ -70,12 +102,12 @@ export default function MbtiGridSelector({ value, onChange }) {
           onClick={() => onChange(null)}
           aria-pressed={value === null}
         >
-          정확한 MBTI를 잘 모르겠어요
+          테스트 없이 분석하기
         </button>
       </div>
 
       <p className="notice-text">
-        ※ 잘 모르실 경우 선택하지 않으셔도 되며, 이 경우 MBTI 간극 비교를 제외한 순수 영화 취향 분석 결과만 출력됩니다.
+        ※ MBTI가 주입되면 MVTI와의 갭(Gap)을 정밀 분석해 드립니다. 모르시는 경우 테스트를 거쳐 진단받으시거나, 생략하고 진행하실 수 있습니다.
       </p>
 
       <style jsx>{`
@@ -169,6 +201,33 @@ export default function MbtiGridSelector({ value, onChange }) {
           font-family: var(--font-body);
         }
 
+        /* 약식 진단 트리거 구역 */
+        .mbti-test-entry-area {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 15px;
+        }
+
+        .btn-trigger-test {
+          background: rgba(138, 43, 226, 0.1);
+          border: 1px solid var(--secondary-color);
+          color: var(--text-main);
+          font-family: var(--font-title);
+          font-size: 0.88rem;
+          font-weight: 600;
+          padding: 12px 24px;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: var(--transition-smooth);
+          box-shadow: 0 4px 10px rgba(138,43,226,0.15);
+        }
+
+        .btn-trigger-test:hover {
+          transform: translateY(-2px);
+          background: rgba(138,43,226,0.25);
+          box-shadow: 0 6px 15px var(--secondary-glow);
+        }
+
         /* 잘 모름 버튼 구역 */
         .mbti-unknown-area {
           display: flex;
@@ -180,8 +239,8 @@ export default function MbtiGridSelector({ value, onChange }) {
           background: transparent;
           border: 1px dashed var(--border-color);
           color: var(--text-muted);
-          font-size: 0.85rem;
-          padding: 10px 20px;
+          font-size: 0.82rem;
+          padding: 8px 16px;
           border-radius: 20px;
           cursor: pointer;
           transition: var(--transition-smooth);
@@ -209,10 +268,10 @@ export default function MbtiGridSelector({ value, onChange }) {
         /* 모바일 미디어 쿼리 적용 */
         @media (max-width: 580px) {
           .mbti-grid {
-            display: none; /* 모바일에서는 그리드 숨김 */
+            display: none;
           }
           .mbti-select-fallback {
-            display: block; /* 모바일 전용 드롭다운 표시 */
+            display: block;
           }
         }
       `}</style>

@@ -1,22 +1,43 @@
 import React from 'react';
 
 /**
- * 하단 고정 영화 선택 트레이 컴포넌트
- * @param {object} props { selectedMovies, onRemoveMovie, onSubmit, minRequired = 6 }
+ * 하단 고정 영화 선택 트레이 컴포넌트 (좋아하는 영화 / 싫어하는 영화 2단계 모드 지원)
+ * @param {object} props { selectedMovies, onRemoveMovie, onSubmit, minRequired = 3, mode = 'like' }
  */
-export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit, minRequired = 6 }) {
+export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit, minRequired = 3, mode = 'like' }) {
   const count = selectedMovies.length;
   const isReady = count >= minRequired;
   const progressPercent = Math.min((count / minRequired) * 100, 100);
 
+  const isLikeMode = mode === 'like';
+
+  // 모드별 텍스트 및 가이드 다이내믹 변경
+  const titleText = isLikeMode ? "1단계: 좋아하는 명작 고르기" : "2단계: 굳이 싫어하는 명작 고르기";
+  const guideText = isLikeMode
+    ? (isReady ? "🎉 다음 단계(불호 영화 선택)로 진행할 수 있습니다." : `좋아하는 영화를 최소 ${minRequired}편 이상 선택해주세요.`)
+    : (isReady ? "🎉 준비 완료! 이제 성격(MBTI) 정보를 입력하러 갑니다." : `남들은 인생작이라 하지만, 나는 굳이 싫은 명작을 최소 ${minRequired}편 선택해주세요.`);
+  
+  const buttonText = isLikeMode ? "다음 단계로" : "MBTI 입력하기";
+
+  // 모드별 CSS 변수 동적 설정 (like: 네온 시안, dislike: 네온 엠버)
+  const activeColor = isLikeMode ? "#66fcf1" : "#ff9f1c";
+  const activeGlow = isLikeMode ? "rgba(102, 252, 241, 0.4)" : "rgba(255, 159, 28, 0.4)";
+
   return (
-    <div className="selection-tray glass-panel" aria-label="선택한 영화 트레이">
+    <div 
+      className={`selection-tray glass-panel ${mode}-mode`} 
+      style={{
+        '--active-color': activeColor,
+        '--active-glow': activeGlow
+      }}
+      aria-label="영화 선택 트레이"
+    >
       <div className="tray-content">
         
         {/* 왼쪽 영역: 카운트 및 프로그레스 */}
         <div className="tray-info">
           <div className="info-text">
-            <h4>좋아하는 영화 고르기</h4>
+            <h4>{titleText}</h4>
             <p className="counter">
               <span>{count}</span> / {minRequired} 편 선택됨
             </p>
@@ -24,37 +45,37 @@ export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit,
           <div className="progress-track" aria-hidden="true">
             <div className="progress-bar" style={{ width: `${progressPercent}%` }} />
           </div>
-          <p className="guide-text">
-            {isReady 
-              ? "🎉 분석 준비가 완료되었습니다! 버튼을 눌러주세요." 
-              : `최소 ${minRequired}편 이상을 선택하시면 취향 분석이 시작됩니다.`}
-          </p>
+          <p className="guide-text">{guideText}</p>
         </div>
 
         {/* 중앙 영역: 선택한 미니 포스터 카드 리스트 */}
         <div className="tray-list">
           {selectedMovies.length === 0 ? (
-            <div className="empty-tray-msg">위의 움직이는 포스터에서 좋아하는 영화를 탭해보세요.</div>
+            <div className="empty-tray-msg">
+              {isLikeMode 
+                ? "위의 움직이는 포스터에서 정말 좋아하는 작품을 탭해 보세요." 
+                : "남들은 명작이라 찬사하지만, 나는 굳이 싫은 영화를 탭해 보세요."}
+            </div>
           ) : (
             selectedMovies.map(movie => (
               <MiniPosterCard 
                 key={`mini-${movie.id}`} 
                 movie={movie} 
                 onRemove={() => onRemoveMovie(movie.id)} 
+                mode={mode}
               />
             ))
           )}
         </div>
 
-        {/* 오른쪽 영역: 분석 시작 CTA 버튼 */}
+        {/* 오른쪽 영역: 시작/다음단계 CTA 버튼 */}
         <div className="tray-action">
           <button 
             className={`btn-start ${isReady ? 'active' : ''}`}
             disabled={!isReady}
             onClick={onSubmit}
           >
-            취향 분석 시작
-            <span className="btn-glow-effect"></span>
+            {buttonText}
           </button>
         </div>
 
@@ -72,9 +93,20 @@ export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit,
           border-left: none;
           border-right: none;
           border-bottom: none;
-          background: rgba(11, 12, 16, 0.85);
-          box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
+          background: rgba(11, 12, 16, 0.9);
+          box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
           padding: 10px 30px;
+          border-top: 2px solid var(--border-color);
+          transition: border-color 0.4s ease;
+        }
+
+        /* 불호/호 모드별 보더 칼라 교체 */
+        .selection-tray.like-mode {
+          border-top-color: rgba(102, 252, 241, 0.25);
+        }
+        
+        .selection-tray.dislike-mode {
+          border-top-color: rgba(255, 159, 28, 0.25);
         }
 
         .tray-content {
@@ -88,7 +120,7 @@ export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit,
         /* 1. 왼쪽 정보 구역 */
         .tray-info {
           flex-shrink: 0;
-          width: 250px;
+          width: 280px;
         }
 
         .info-text {
@@ -111,15 +143,17 @@ export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit,
         }
 
         .counter span {
-          color: var(--primary-color);
+          color: var(--active-color);
           font-weight: 700;
           font-size: 1.1rem;
+          text-shadow: 0 0 10px var(--active-glow);
+          transition: color 0.4s ease;
         }
 
         .progress-track {
           width: 100%;
           height: 6px;
-          background: rgba(255,255,255,0.1);
+          background: rgba(255, 255, 255, 0.05);
           border-radius: 10px;
           overflow: hidden;
           margin-bottom: 6px;
@@ -127,14 +161,18 @@ export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit,
 
         .progress-bar {
           height: 100%;
-          background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+          background: var(--active-color);
+          box-shadow: 0 0 8px var(--active-glow);
           border-radius: 10px;
-          transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s;
         }
 
         .guide-text {
           font-size: 0.75rem;
-          color: var(--text-muted);
+          color: var(--text-desc);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         /* 2. 중앙 리스트 구역 */
@@ -146,9 +184,9 @@ export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit,
           padding: 5px 10px;
           height: 90px;
           align-items: center;
-          background: rgba(0,0,0,0.2);
+          background: rgba(0, 0, 0, 0.3);
           border-radius: 12px;
-          border: 1px solid rgba(255,255,255,0.03);
+          border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .tray-list::-webkit-scrollbar {
@@ -156,8 +194,8 @@ export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit,
         }
 
         .empty-tray-msg {
-          font-size: 0.85rem;
-          color: var(--text-desc);
+          font-size: 0.82rem;
+          color: var(--text-muted);
           text-align: center;
           width: 100%;
           opacity: 0.7;
@@ -169,31 +207,29 @@ export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit,
         }
 
         .btn-start {
-          position: relative;
           background: #1f2833;
-          color: rgba(255,255,255,0.3);
-          border: 1px solid rgba(255,255,255,0.05);
+          color: rgba(255, 255, 255, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.05);
           font-family: var(--font-title);
-          font-size: 1rem;
+          font-size: 0.95rem;
           font-weight: 700;
-          padding: 14px 28px;
+          padding: 14px 24px;
           border-radius: 12px;
           cursor: not-allowed;
           transition: var(--transition-smooth);
-          overflow: hidden;
         }
 
         .btn-start.active {
-          background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+          background: var(--active-color);
           color: var(--bg-color);
           border-color: transparent;
           cursor: pointer;
-          box-shadow: 0 4px 20px var(--primary-glow);
+          box-shadow: 0 4px 15px var(--active-glow);
         }
 
         .btn-start.active:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 25px var(--primary-glow), 0 0 15px var(--secondary-glow);
+          box-shadow: 0 6px 20px var(--active-glow);
         }
 
         .btn-start.active:active {
@@ -230,11 +266,13 @@ export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit,
 /**
  * 미니 포스터 카드 컴포넌트
  */
-function MiniPosterCard({ movie, onRemove }) {
+function MiniPosterCard({ movie, onRemove, mode }) {
   const [imgSrc, setImgSrc] = React.useState(movie.posterPath);
+  const btnColor = mode === 'like' ? 'rgba(255, 77, 77, 0.9)' : 'rgba(102, 252, 241, 0.95)';
+  const btnTextColor = mode === 'like' ? 'white' : '#0b0c10';
 
   return (
-    <div className="mini-card" aria-label={`${movie.titleKo} 선택 취소 가능`}>
+    <div className={`mini-card ${mode}-badge`} aria-label={`${movie.titleKo} 선택 취소`}>
       <img 
         src={imgSrc} 
         alt="" 
@@ -242,6 +280,10 @@ function MiniPosterCard({ movie, onRemove }) {
       />
       <button 
         className="btn-remove" 
+        style={{
+          background: btnColor,
+          color: btnTextColor
+        }}
         onClick={(e) => {
           e.stopPropagation();
           onRemove();
@@ -259,13 +301,22 @@ function MiniPosterCard({ movie, onRemove }) {
           border-radius: 6px;
           overflow: hidden;
           flex-shrink: 0;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.5);
           transition: transform 0.2s;
-          border: 1px solid rgba(255,255,255,0.08);
+          border: 1px solid rgba(255,255,255,0.06);
         }
 
         .mini-card:hover {
           transform: scale(1.08);
+        }
+
+        /* 모드별 미니 포스터 연한 형광 테두리 장식 */
+        .mini-card.like-badge {
+          border-color: rgba(102, 252, 241, 0.3);
+        }
+        
+        .mini-card.dislike-badge {
+          border-color: rgba(255, 159, 28, 0.3);
         }
 
         img {
@@ -278,8 +329,6 @@ function MiniPosterCard({ movie, onRemove }) {
           position: absolute;
           top: 2px;
           right: 2px;
-          background: rgba(255, 77, 77, 0.95);
-          color: white;
           border: none;
           width: 16px;
           height: 16px;
