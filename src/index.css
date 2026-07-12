@@ -138,3 +138,75 @@ h1, h2, h3, h4, h5, h6 {
     animation: none !important;
   }
 }
+
+/* 상단 헤더 네비게이션 레이아웃 및 링킹 디자인 */
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto 10px auto;
+  padding: 0 20px;
+  z-index: 100;
+}
+
+@media (min-width: 768px) {
+  .app-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.header-nav {
+  display: flex;
+  gap: 8px;
+  background: rgba(31, 40, 51, 0.5);
+  padding: 6px;
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+}
+
+.nav-link {
+  text-decoration: none;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-desc);
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.nav-link.active {
+  background: var(--primary-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+
+/* 폼, 레이아웃 및 기타 공통 버튼 스타일 */
+.btn-primary {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  border: none;
+  color: var(--bg-color);
+  padding: 12px 32px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: var(--font-title);
+  font-weight: 700;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--primary-glow);
+}
