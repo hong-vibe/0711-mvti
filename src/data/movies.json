@@ -860,21 +860,21 @@
     "openClosure": 80
   },
   {
-    "id": "tmdb-116745",
-    "tmdbId": 116745,
-    "titleKo": "월터의 상상은 현실이 된다",
-    "originalTitle": "The Secret Life of Walter Mitty",
+    "id": "tmdb-12477",
+    "tmdbId": 12477,
+    "titleKo": "반딧불의 묘",
+    "originalTitle": "火垂るの墓",
     "releaseYear": 2013,
     "primaryGenre": "SF",
     "genres": [
-      "코미디",
+      "애니메이션",
       "드라마",
-      "판타지"
+      "전쟁"
     ],
-    "posterPath": "https://image.tmdb.org/t/p/w500/88J7DQ0Yn6MIqXaAiTgjyErzPnh.jpg",
-    "overviewKo": "자신의 꿈은 접어둔 채 16년째 ‘라이프’ 잡지사에서 포토 에디터로 일하고 있는 월터 미티.  해본 것도, 가본 곳도, 특별한 일도 없는 월터의 유일한 취미는 바로 상상!  상상 속에서만큼은 ‘본 시리즈’보다 용감한 히어로, ‘벤자민 버튼’보다 로맨틱한 사랑의 주인공이 된다.  어느 날, ‘라이프’지의 폐간을 앞두고 전설의 사진작가가 보내 온 표지 사진이 사라지는 일이 벌어진다.  당장 사진을 찾아오지 못할 경우 직장에서 쫓겨날 위기에 처하게 된 월터는  사라진 사진의 미스터리를 풀기 위해 연락조자 닿지 않는 사진작가를 찾아 떠나는데…  지구 반대편 여행하기, 바다 한 가운데 헬기에서 뛰어내리기, 폭발직전 화산으로 돌진하기 등  한 번도 뉴욕을 벗어나 본 적 없는 월터는 전혀 예상치 못한 곳에서 상상과는 비교도 안 되는 수 많은 어드벤처를 겪으면서 생애 최고의 순간을 맞이하게 되는데…  당신이 망설이고 있는 그 순간, 월터의 상상은 현실이 된다!",
-    "originalLanguage": "en",
-    "runtime": 115,
+    "posterPath": "https://image.tmdb.org/t/p/w500/uN0x0G4uuRjFJIFN57iYihBV2Qh.jpg",
+    "overviewKo": "2차 세계대전, 일본의 한 마을에 폭격기로 인한 대공습이 일어난다. 마을이 화염으로 휩싸이자, 14살인 세이타는 부모님과 따로 만나기로 약속한 채 4살짜리 여동생 세츠코를 업고 피신한다. 결국 집과 어머니를 잃고 먼 친척아주머니의 집으로 향하는 세이타와 세츠코. 힘들고 어려운 환경에서도 오빠 세이타는 천진하고 착한 여동생 세츠코를 보면서 희망과 용기를 잃지 않는다. 하지만 시간이 지날수록 친척아주머니의 남매에 대한 냉대는 더욱 심해지고, 세이타는 어머니가 남겨주었던 마지막 여비를 챙겨 세츠코와 함께 산 속에 있는 방공호로 거처를 옮긴다. 두 남매는 산 속 동굴에서 반딧불이를 잡아 불을 밝히고, 물고기와 개구리를 잡아먹으며 살아가는데...",
+    "originalLanguage": "ja",
+    "runtime": 89,
     "fictionReality": 45,
     "highLowTempo": 75,
     "emotionIdea": 70,
@@ -1976,5 +1976,107 @@
     "highLowTempo": 45,
     "emotionIdea": 85,
     "openClosure": 15
+  },
+  {
+    "id": "tmdb-396371",
+    "tmdbId": 396371,
+    "titleKo": "몰리스 게임",
+    "originalTitle": "Molly's Game",
+    "releaseYear": 2025,
+    "primaryGenre": "SF",
+    "genres": [
+      "드라마",
+      "범죄"
+    ],
+    "posterPath": "https://image.tmdb.org/t/p/w500/iaYvNgiExX2jPO9ehpLyRIkzdBT.jpg",
+    "overviewKo": "부상으로 한순간 모든 것을 잃은 올림픽 스키 유망주 몰리는 우연한 기회로 지하 포커 세계를 움직이는 하우스에서 일하게 된다. 할리우드 로열패밀리부터 스포츠 스타, 거대 기업인들까지 상상을 뛰어넘는 판돈과 은밀한 거래가 오가던 비밀 하우스에 어느새 조금씩 균열이 일어나게 되고, 몰리는 그 틈을 타 포커판을 자신의 것으로 만들고자 ‘플레이어 X’와 함께 세계 최고, 최대의 포커 하우스를 새롭게 오픈한다. 점점 커지는 판돈과 시한폭탄과도 같은 플레이어들이 몰려들수록 ‘몰리’의 포커 하우스는 점점 숨 막히는 긴장감이 감돌게 되는데…",
+    "originalLanguage": "en",
+    "runtime": 140,
+    "fictionReality": 95,
+    "highLowTempo": 70,
+    "emotionIdea": 50,
+    "openClosure": 75
+  },
+  {
+    "id": "tmdb-293670",
+    "tmdbId": 293670,
+    "titleKo": "곡성",
+    "originalTitle": "곡성",
+    "releaseYear": 2016,
+    "primaryGenre": "공포",
+    "genres": [
+      "공포",
+      "미스터리"
+    ],
+    "posterPath": "https://image.tmdb.org/t/p/w500/k9AKtgRErXjz14lFHL2IJVCgwOT.jpg",
+    "overviewKo": "낯선 외지인이 나타난 후 벌어지는 의문의 연쇄 사건들로 마을이 발칵 뒤집힌다. 경찰은 집단 야생 버섯 중독으로 잠정적 결론을 내리지만  모든 사건의 원인이 그 외지인 때문이라는 소문과 의심이 걷잡을 수 없이 퍼져 나간다. 경찰 종구는 현장을 목격했다는 여인 무명을 만나면서  외지인에 대한 소문을 확신하기 시작한다. 딸 효진이 피해자들과 비슷한 증상으로 아파오기 시작하자 다급해진 종구. 외지인을 찾아 난동을 부리고, 무속인 일광을 불러들이는데...",
+    "originalLanguage": "ko",
+    "runtime": 156,
+    "fictionReality": 80,
+    "highLowTempo": 75,
+    "emotionIdea": 65,
+    "openClosure": 95
+  },
+  {
+    "id": "tmdb-424694",
+    "tmdbId": 424694,
+    "titleKo": "보헤미안 랩소디",
+    "originalTitle": "Bohemian Rhapsody",
+    "releaseYear": 2018,
+    "primaryGenre": "드라마",
+    "genres": [
+      "음악",
+      "드라마"
+    ],
+    "posterPath": "https://image.tmdb.org/t/p/w500/ruZrJe35GG90394nbabbk9Ed7sS.jpg",
+    "overviewKo": "공항 수하물 노동자로 일하며 음악의 꿈을 키우던 이민자 출신의 아웃사이더 파록 버사라. 보컬을 구하던 로컬 밴드에 들어가게 되면서 프레디 머큐리라는 이름으로 밴드 퀸을 이끌게 된다. 시대를 앞서가는 독창적인 음악과 화려한 퍼포먼스로 관중들을 사로잡으며 성장하던 퀸은 방송에서 외면을 받을 것이라는 음반사의 반대에도 불구하고 무려 6분 동안 이어지는 실험적인 곡 보헤미안 랩소디로 대성공을 거두며 월드스타 반열에 오른다. 그러나 독보적인 존재감을 뿜어내던 프레디는 솔로 데뷔라는 유혹에 흔들리게 되고, 오랜 시간 함께 해왔던 멤버들과 결별을 선언하게 되는데...",
+    "originalLanguage": "en",
+    "runtime": 134,
+    "fictionReality": 10,
+    "highLowTempo": 65,
+    "emotionIdea": 90,
+    "openClosure": 15
+  },
+  {
+    "id": "tmdb-116745",
+    "tmdbId": 116745,
+    "titleKo": "월터의 상상은 현실이 된다",
+    "originalTitle": "The Secret Life of Walter Mitty",
+    "releaseYear": 2013,
+    "primaryGenre": "드라마",
+    "genres": [
+      "코미디",
+      "드라마",
+      "판타지"
+    ],
+    "posterPath": "https://image.tmdb.org/t/p/w500/88J7DQ0Yn6MIqXaAiTgjyErzPnh.jpg",
+    "overviewKo": "자신의 꿈은 접어둔 채 16년째 ‘라이프’ 잡지사에서 포토 에디터로 일하고 있는 월터 미티.  해본 것도, 가본 곳도, 특별한 일도 없는 월터의 유일한 취미는 바로 상상!  상상 속에서만큼은 ‘본 시리즈’보다 용감한 히어로, ‘벤자민 버튼’보다 로맨틱한 사랑의 주인공이 된다.  어느 날, ‘라이프’지의 폐간을 앞두고 전설의 사진작가가 보내 온 표지 사진이 사라지는 일이 벌어진다.  당장 사진을 찾아오지 못할 경우 직장에서 쫓겨날 위기에 처하게 된 월터는  사라진 사진의 미스터리를 풀기 위해 연락조자 닿지 않는 사진작가를 찾아 떠나는데…  지구 반대편 여행하기, 바다 한 가운데 헬기에서 뛰어내리기, 폭발직전 화산으로 돌진하기 등  한 번도 뉴욕을 벗어나 본 적 없는 월터는 전혀 예상치 못한 곳에서 상상과는 비교도 안 되는 수 많은 어드벤처를 겪으면서 생애 최고의 순간을 맞이하게 되는데…  당신이 망설이고 있는 그 순간, 월터의 상상은 현실이 된다!",
+    "originalLanguage": "en",
+    "runtime": 115,
+    "fictionReality": 40,
+    "highLowTempo": 50,
+    "emotionIdea": 85,
+    "openClosure": 30
+  },
+  {
+    "id": "tmdb-244786",
+    "tmdbId": 244786,
+    "titleKo": "위플래쉬",
+    "originalTitle": "Whiplash",
+    "releaseYear": 2014,
+    "primaryGenre": "드라마",
+    "genres": [
+      "드라마",
+      "음악",
+      "스릴러"
+    ],
+    "posterPath": "https://image.tmdb.org/t/p/w500/oKNkhmyIBiDENivK6ELZxfBWa3q.jpg",
+    "overviewKo": "최고의 드러머가 되기 위해서라면 무엇이든 할 각오가 되어있는 음악대학 신입생 앤드류는 아무도 없는 지하실에서 혼자 드럼을 연습하던 중 우연한 기회로 누구든지 성공으로 이끄는 최고의 실력자이지만, 또한 동시에 최악의 폭군인 플렛처 교수에게 발탁되어 그의 밴드에 들어가게 된다. 설레는 마음으로 참가한 첫 연습에서, 그는 플렛처 교수의 진짜 얼굴을 마주치게 된다. 폭언과 학대 속에 좌절과 성취를 동시에 안겨주는 플렛처의 지독한 교육방식은 천재가 되길 갈망하는 앤드류의 집착을 끌어내며 그를 점점 광기로 몰아넣는데...",
+    "originalLanguage": "en",
+    "runtime": 106,
+    "fictionReality": 10,
+    "highLowTempo": 85,
+    "emotionIdea": 80,
+    "openClosure": 70
   }
 ]

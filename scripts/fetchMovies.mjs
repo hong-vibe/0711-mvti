@@ -408,7 +408,7 @@ const MOVIE_SEED_DATA = [
     fallbackPoster: "/ten5c8dD1l5s4rG2y2A3b8t9k2d1.jpg"
   },
   {
-    tmdbId: 116745,
+    tmdbId: 12477,
     titleKo: "그래비티",
     primaryGenre: "SF",
     releaseYear: 2013,
@@ -900,6 +900,52 @@ const MOVIE_SEED_DATA = [
     fictionReality: 5, highLowTempo: 45, emotionIdea: 85, openClosure: 15,
     fallbackOverview: "명예와 지위를 중시하지만 오만한 귀족 다이시와 영리하고 자존심 세지만 Darcy에 대한 편견을 가졌던 리지(엘리자베스)의 로맨틱 고전 극.",
     fallbackPoster: "/pride5c8dD1l5s4rG2y2A3b8t9k2d1.jpg"
+  },
+  // === 사용자 요청 추가 영화 (5편) ===
+  {
+    tmdbId: 396371,
+    titleKo: "미키 17",
+    primaryGenre: "SF",
+    releaseYear: 2025,
+    fictionReality: 95, highLowTempo: 70, emotionIdea: 50, openClosure: 75,
+    fallbackOverview: "얼음 행성을 식민지화하기 위해 파견된 탐험대의 소모품 복제인간 '미키 17'. 죽어도 다시 기억을 복제해 되살아나는 그의 생존과 자아 찾기 모험.",
+    fallbackPoster: "/loop5c8dD1l5s4rG2y2A3b8t9k2d1.jpg"
+  },
+  {
+    tmdbId: 293670,
+    titleKo: "곡성",
+    primaryGenre: "공포",
+    releaseYear: 2016,
+    fictionReality: 80, highLowTempo: 75, emotionIdea: 65, openClosure: 95,
+    fallbackOverview: "외지인이 나타난 후 시작된 의문의 연쇄 사건들로 들끓는 시골 마을. 경찰 종구가 자신의 딸을 구하기 위해 무속인 일광과 힘을 합쳐 실체를 추적한다.",
+    fallbackPoster: "/it5c8dD1l5s4rG2y2A3b8t9k2d1.jpg"
+  },
+  {
+    tmdbId: 424694,
+    titleKo: "보헤미안 랩소디",
+    primaryGenre: "드라마",
+    releaseYear: 2018,
+    fictionReality: 10, highLowTempo: 65, emotionIdea: 90, openClosure: 15,
+    fallbackOverview: "시대와 세대를 초월한 전설적인 록 밴드 퀸과 독창적인 보컬 프레디 머큐리의 음악과 열정, 그리고 극적인 인생을 그린 전기 드라마.",
+    fallbackPoster: "/b19c8dD1l5s4rG2y2A3b8t9k2d1.jpg"
+  },
+  {
+    tmdbId: 116745,
+    titleKo: "월터의 상상은 현실이 된다",
+    primaryGenre: "드라마",
+    releaseYear: 2013,
+    fictionReality: 40, highLowTempo: 50, emotionIdea: 85, openClosure: 30,
+    fallbackOverview: "폐간을 앞둔 라이프지에서 16년째 사진 관리자로 일하는 월터 미티. 사라진 마지막 앨범 사진을 찾아 상상을 넘어선 모험을 시작한다.",
+    fallbackPoster: "/grav5c8dD1l5s4rG2y2A3b8t9k2d1.jpg"
+  },
+  {
+    tmdbId: 244786,
+    titleKo: "위플래시",
+    primaryGenre: "드라마",
+    releaseYear: 2014,
+    fictionReality: 10, highLowTempo: 85, emotionIdea: 80, openClosure: 70,
+    fallbackOverview: "최고의 재즈 드러머가 되기 위해 명문 음악학교에 입학한 신입생 앤드류와, 그의 천재성을 폭력적으로 이끌어내려는 독종 교수 플레처의 광기 어린 대립.",
+    fallbackPoster: "/pp5c8dD1l5s4rG2y2A3b8t9k2d1.jpg"
   }
 ];
 
