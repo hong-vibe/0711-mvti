@@ -1328,6 +1328,7 @@ Please change the parent <Route path="${f}"> to <Route path="${f==="/"?"*":`${f}
           font-weight: 500;
           cursor: pointer;
           white-space: nowrap;
+          flex-shrink: 0;
           transition: var(--transition-smooth);
         }
 
