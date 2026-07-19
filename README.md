@@ -31,11 +31,18 @@
 
 | 화면 | 설명 | 캡처 |
 | :--- | :--- | :--- |
+<<<<<<< HEAD
 | 메인 목록 화면 | 저장된 취향 기록 목록을 확인하는 취향 기록실 화면 | ![메인 목록 화면](./docs/screenshots/current-v1/07-my-taste-crud.png) |
 | 항목 추가 화면 | 실시간 검색을 통해 새로운 영화 반응을 추가하는 화면 | ![항목 추가 화면](./docs/screenshots/current-v1/07-my-taste-crud.png) |
 | 항목 수정 화면 | 등록된 영화 반응의 별점 강도 및 감상평 메모를 변경하는 수정 모달 화면 | ![항목 수정 화면](./docs/screenshots/current-v1/07-my-taste-crud.png) |
 | 항목 삭제 화면 | 삭제 버튼 클릭 시 최종 의사를 묻는 재확인 다이얼로그와 삭제 반영 후 화면 | ![항목 삭제 화면](./docs/screenshots/current-v1/07-my-taste-crud.png) |
 | 빈 상태 또는 오류 상태 | 온보딩 최소 영화(6편) 미달 시 나타나는 진단 진행도 빈 상태 화면 | ![빈 상태 또는 오류 상태](./docs/screenshots/current-v1/08-empty-state.png) |
+=======
+| 모바일 화면 | 모바일 뷰포트에서 레이아웃 및 반응형 디자인 확인 | ![모바일 화면](./docs/screenshots/current-v1/10-mobile-width.png) |
+| 포스터 선택 화면 | 포스터 선택 플로우 및 스테가드 애니메이션 | ![포스터 선택 화면](./docs/screenshots/current-v1/01-poster-selection.png) |
+| MBTI 입력 화면 | MBTI 약식 테스트 입력 단계 | ![MBTI 입력 화면](./docs/screenshots/current-v1/04-mbti-input.png) |
+| 일일 추천 화면 | 하루 3개 추천 슬롯 UI | ![일일 추천 화면](./docs/screenshots/current-v1/06-daily-recommendation.png) |
+>>>>>>> develop/v1.1
 
 ---
 
@@ -127,6 +134,7 @@ npm.cmd run dev
 
 ## 7\. 폴더 및 파일 구조
 
+<<<<<<< HEAD
 프로젝트 폴더/
 ├─ README.md
 ├─ package.json
@@ -168,6 +176,53 @@ npm.cmd run dev
    ├─ MVTI_V1_CURRENT_STATE_FOR_V2_PRD.md # V1 현황 분석 및 분석 스크립트 결과 보고서
    └─ screenshots/             # 10장의 최종 검증 캡처 이미지
 
+=======
+## 7. 폴더 및 파일 구조
+
+```plaintext
+프로젝트 폴더/
+├─ README.md
+├─ package.json
+├─ vite.config.js
+├─ public/
+│  └─ poster-placeholder.svg   # 포스터 엑박 대비 폴백 리소스
+├─ src/
+│  ├─ main.jsx                 # 앱 진입 포인트
+│  ├─ App.jsx                  # 온보딩 화면 흐름 및 메인 네비게이션 라우터
+│  ├─ index.css                # 테마 네온 컬러 변수 및 전역 스타일 시스템
+│  ├─ components/
+│  │  ├─ common/
+│  │  │  └─ EmptyState.jsx     # 등록 정보 누락 시 안내 UI
+│  │  ├─ landing/
+│  │  │  ├─ DiagonalPosterFlow.jsx # Staggered 애니메이션이 탑재된 포스터 롤링
+│  │  │  └─ SelectionTray.jsx      # 실시간 동적 카운팅 바
+│  │  ├─ onboarding/
+│  │  │  ├─ MbtiGridSelector.jsx   # 16개 그리드 유형 선택기
+│  │  │  └─ MbtiMiniTest.jsx       # 4문항 약식 자가 진단 테스트
+│  │  ├─ result/
+│  │  │  ├─ AxisChart.jsx          # 4대 축 취향 시각화 분석 차트
+│  │  │  └─ MbtiMvtiComparison.jsx  # 성격 대 취향 간극 분석 연동
+│  │  └─ taste/
+│  │     ├─ DeleteConfirmDialog.jsx # 삭제 안전 확인 커스텀 팝업
+│  │     ├─ EditReactionModal.jsx   # 강도/메모 수정 팝업 모달
+│  │     ├─ ReactionCard.jsx        # 개별 영화 기록 카드
+│  │     ├─ ReactionForm.jsx        # 실시간 타이핑 매칭 추가 폼
+│  │     └─ ReactionList.jsx        # 분류 탭 필터/검색/정렬 컨트롤
+```
+│  ├─ data/
+│  │  └─ movies.json           # 엄선된 96편의 대조 영화 원본셋
+│  ├─ hooks/
+│  │  ├─ useLocalStorage.js        # 에러 복구 무결성 가드가 내장된 저장소 훅
+│  │  └─ useReactions.js           # CRUD 핸들러 제어 비즈니스 로직 훅
+│  └─ pages/
+│     ├─ DashboardPage.jsx     # 일일 3슬롯 추천 대시보드
+│     ├─ MvtiResultPage.jsx     # 최종 취향 진단서 페이지
+│     └─ MyTastePage.jsx       # CRUD 기록실 메인 페이지
+└─ docs/
+   ├─ MVTI_V1_CURRENT_STATE_FOR_V2_PRD.md # V1 현황 분석 및 분석 스크립트 결과 보고서
+   └─ screenshots/             # 10장의 최종 검증 캡처 이미지
+
+>>>>>>> develop/v1.1
 | 파일/폴더 | 역할 |
 | :--- | :--- |
 | `src/hooks/useReactions.js` | 로컬스토리지 데이터를 원본 훼손 없이 불변성 상태 업데이트를 거쳐 CRUD하는 핵심 엔진 |

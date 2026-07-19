@@ -40,7 +40,7 @@ export default function AxisChart({ scores }) {
 
   return (
     <div className="axis-chart-container">
-      <h3 className="chart-title">📊 4대 성향 축 세부 분석</h3>
+      <h3 className="chart-title">4축 성향 분석</h3>
       
       <div className="axes-list">
         {axes.map((axis) => {
@@ -98,12 +98,12 @@ export default function AxisChart({ scores }) {
         }
 
         .chart-title {
-          font-size: 1.15rem;
+          font-size: 1rem;
           font-weight: 700;
-          color: #fff;
+          color: var(--text-main);
           margin-top: 0;
           margin-bottom: 24px;
-          border-left: 3px solid var(--primary-color, #66fcf1);
+          border-left: 2px solid var(--primary-color);
           padding-left: 10px;
         }
 
@@ -131,8 +131,7 @@ export default function AxisChart({ scores }) {
         }
 
         .axis-score-val {
-          color: var(--primary-color, #66fcf1);
-          text-shadow: 0 0 10px rgba(102, 252, 241, 0.2);
+          color: var(--primary-color);
         }
 
         .gauge-bar-wrapper {
@@ -187,13 +186,11 @@ export default function AxisChart({ scores }) {
         }
 
         .gauge-fill.fill-right {
-          background: linear-gradient(90deg, var(--secondary-color, #c8a2c8) 0%, var(--primary-color, #66fcf1) 100%);
-          box-shadow: 0 0 12px rgba(102, 252, 241, 0.4);
+          background: var(--primary-color);
         }
 
         .gauge-fill.fill-left {
-          background: linear-gradient(90deg, var(--primary-color, #66fcf1) 0%, var(--secondary-color, #c8a2c8) 100%);
-          box-shadow: 0 0 12px rgba(200, 162, 200, 0.4);
+          background: var(--accent-warm);
         }
       `}</style>
     </div>

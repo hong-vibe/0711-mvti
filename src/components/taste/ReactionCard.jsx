@@ -30,9 +30,9 @@ export default function ReactionCard({ reaction, onEditClick, onDeleteClick }) {
   const renderSentiment = () => {
     switch (sentiment) {
       case 'like':
-        return <span className="badge sentiment-badge like">❤️ 좋았어요</span>;
+        return <span className="badge sentiment-badge like">❤️ 내 취향</span>;
       case 'dislike':
-        return <span className="badge sentiment-badge dislike">👎 별로였어요</span>;
+        return <span className="badge sentiment-badge dislike">🤷 나는 별로</span>;
       case 'neutral':
       default:
         return <span className="badge sentiment-badge neutral">😐 그냥 그래요</span>;
@@ -123,29 +123,29 @@ export default function ReactionCard({ reaction, onEditClick, onDeleteClick }) {
         .reaction-card {
           display: flex;
           flex-direction: row;
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 12px;
+          background: var(--bg-elevated);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-lg);
           overflow: hidden;
-          margin-bottom: 20px;
-          transition: transform 0.2s, box-shadow 0.2s;
+          margin-bottom: 16px;
+          transition: var(--transition-smooth);
         }
 
         .reaction-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-          border-color: rgba(255, 255, 255, 0.12);
+          transform: translateY(-1px);
+          border-color: var(--border-default);
         }
 
         .reaction-card.sentiment-like {
-          border-left: 4px solid #e53e3e;
+          border-left: 3px solid var(--accent-rose);
         }
 
         .reaction-card.sentiment-dislike {
-          border-left: 4px solid #dd6b20;
+          border-left: 3px solid var(--accent-warm);
         }
 
         .reaction-card.sentiment-neutral {
-          border-left: 4px solid #718096;
+          border-left: 3px solid var(--text-muted);
         }
 
         .card-poster-wrapper {
@@ -153,13 +153,13 @@ export default function ReactionCard({ reaction, onEditClick, onDeleteClick }) {
           width: 90px;
           min-width: 90px;
           height: 100%;
-          background: #1a202c;
+          background: var(--bg-surface);
         }
 
         @media (min-width: 480px) {
           .card-poster-wrapper {
-            width: 120px;
-            min-width: 120px;
+            width: 110px;
+            min-width: 110px;
           }
         }
 
@@ -192,20 +192,20 @@ export default function ReactionCard({ reaction, onEditClick, onDeleteClick }) {
           justify-content: space-between;
           align-items: flex-start;
           gap: 12px;
-          margin-bottom: 12px;
+          margin-bottom: 10px;
         }
 
         .card-title {
           margin: 0;
-          font-size: 1.1rem;
-          color: #fff;
+          font-size: 1.05rem;
+          color: var(--text-main);
           font-weight: 700;
           line-height: 1.3;
         }
 
         .card-meta {
           font-size: 0.8rem;
-          color: #a0aec0;
+          color: var(--text-secondary);
           margin-top: 4px;
           display: block;
         }
@@ -213,49 +213,52 @@ export default function ReactionCard({ reaction, onEditClick, onDeleteClick }) {
         .badge {
           display: inline-block;
           font-size: 0.7rem;
-          font-weight: 700;
-          padding: 4px 8px;
-          border-radius: 4px;
+          font-weight: 600;
+          padding: 3px 8px;
+          border-radius: var(--radius-sm);
           white-space: nowrap;
         }
 
         .sentiment-badge.like {
-          background: rgba(229, 62, 109, 0.9);
-          color: #fff;
+          background: var(--accent-rose-muted);
+          color: var(--accent-rose);
+          border: 1px solid var(--accent-rose);
         }
 
         .sentiment-badge.dislike {
-          background: rgba(221, 107, 32, 0.9);
-          color: #fff;
+          background: var(--accent-warm-muted);
+          color: var(--accent-warm);
+          border: 1px solid var(--accent-warm);
         }
 
         .sentiment-badge.neutral {
-          background: rgba(74, 85, 104, 0.9);
-          color: #fff;
+          background: var(--bg-surface);
+          color: var(--text-secondary);
+          border: 1px solid var(--border-default);
         }
 
         .status-badge {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          color: #e2e8f0;
+          background: var(--bg-surface);
+          border: 1px solid var(--border-subtle);
+          color: var(--text-secondary);
         }
 
         .status-badge.seen {
-          border-color: rgba(102, 252, 241, 0.3);
-          color: var(--primary-color, #66fcf1);
+          border-color: rgba(93, 228, 216, 0.2);
+          color: var(--primary-color);
         }
 
         .card-body {
-          margin-bottom: 16px;
+          margin-bottom: 14px;
           flex: 1;
         }
 
         .strength-display {
           display: flex;
           align-items: center;
-          font-size: 0.8rem;
-          color: #cbd5e0;
-          margin-bottom: 10px;
+          font-size: 0.75rem;
+          color: var(--text-secondary);
+          margin-bottom: 8px;
         }
 
         .strength-icons {
@@ -265,13 +268,13 @@ export default function ReactionCard({ reaction, onEditClick, onDeleteClick }) {
         }
 
         .strength-icon {
-          font-size: 0.85rem;
+          font-size: 0.8rem;
         }
 
         .card-note {
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.04);
-          border-radius: 6px;
+          background: rgba(255, 255, 255, 0.01);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-sm);
           padding: 8px 12px;
         }
 
@@ -283,21 +286,22 @@ export default function ReactionCard({ reaction, onEditClick, onDeleteClick }) {
 
         .note-label {
           display: block;
-          font-size: 0.75rem;
-          color: #718096;
-          margin-bottom: 4px;
+          font-size: 0.7rem;
+          color: var(--text-muted);
+          margin-bottom: 2px;
+          font-weight: 500;
         }
 
         .note-text {
           margin: 0;
-          font-size: 0.85rem;
-          color: #e2e8f0;
+          font-size: 0.82rem;
+          color: var(--text-secondary);
           font-style: italic;
           line-height: 1.4;
         }
 
         .card-note.empty .note-text {
-          color: #4a5568;
+          color: var(--text-muted);
           font-style: normal;
         }
 
@@ -305,53 +309,54 @@ export default function ReactionCard({ reaction, onEditClick, onDeleteClick }) {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
-          padding-top: 12px;
+          border-top: 1px solid var(--border-subtle);
+          padding-top: 10px;
           margin-top: auto;
         }
 
         .card-date {
-          font-size: 0.75rem;
-          color: #718096;
+          font-size: 0.7rem;
+          color: var(--text-muted);
         }
 
         .card-actions {
           display: flex;
-          gap: 8px;
+          gap: 6px;
         }
 
         .btn-card-edit {
           background: transparent;
-          border: 1px solid rgba(102, 252, 241, 0.3);
-          color: var(--primary-color, #66fcf1);
-          padding: 6px 12px;
-          border-radius: 6px;
-          font-size: 0.8rem;
+          border: 1px solid var(--border-default);
+          color: var(--text-secondary);
+          padding: 5px 10px;
+          border-radius: var(--radius-sm);
+          font-size: 0.75rem;
           font-weight: 600;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: var(--transition-smooth);
         }
 
         .btn-card-edit:hover {
-          background: rgba(102, 252, 241, 0.1);
-          border-color: var(--primary-color, #66fcf1);
+          border-color: var(--primary-color);
+          color: var(--primary-color);
+          background: var(--primary-muted);
         }
 
         .btn-card-delete {
           background: transparent;
-          border: 1px solid rgba(229, 62, 109, 0.3);
-          color: #fc8181;
-          padding: 6px 12px;
-          border-radius: 6px;
-          font-size: 0.8rem;
+          border: 1px solid rgba(229, 90, 111, 0.2);
+          color: var(--danger-color);
+          padding: 5px 10px;
+          border-radius: var(--radius-sm);
+          font-size: 0.75rem;
           font-weight: 600;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: var(--transition-smooth);
         }
 
         .btn-card-delete:hover {
-          background: rgba(229, 62, 109, 0.1);
-          border-color: #e53e3e;
+          background: rgba(229, 90, 111, 0.08);
+          border-color: var(--danger-color);
         }
       `}</style>
     </div>
