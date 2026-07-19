@@ -59,13 +59,10 @@ export default function ReactionList({ reactions, onEditClick, onDeleteClick }) 
             전체 ({reactions.length})
           </button>
           <button className={`tab-btn ${filter === 'like' ? 'active' : ''}`} onClick={() => setFilter('like')}>
-            좋았어요 ({reactions.filter(r => r.sentiment === 'like').length})
+            내 취향 ({reactions.filter(r => r.sentiment === 'like').length})
           </button>
           <button className={`tab-btn ${filter === 'dislike' ? 'active' : ''}`} onClick={() => setFilter('dislike')}>
-            별로였어요 ({reactions.filter(r => r.sentiment === 'dislike').length})
-          </button>
-          <button className={`tab-btn ${filter === 'neutral' ? 'active' : ''}`} onClick={() => setFilter('neutral')}>
-            그냥 그래요 ({reactions.filter(r => r.sentiment === 'neutral').length})
+            나는 별로 ({reactions.filter(r => r.sentiment === 'dislike').length})
           </button>
         </div>
 
@@ -136,7 +133,9 @@ export default function ReactionList({ reactions, onEditClick, onDeleteClick }) 
           display: flex;
           flex-direction: column;
           gap: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--bg-elevated);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-lg);
         }
 
         @media (min-width: 768px) {
@@ -164,27 +163,30 @@ export default function ReactionList({ reactions, onEditClick, onDeleteClick }) 
         }
 
         .tab-btn {
-          padding: 8px 16px;
-          border-radius: 20px;
+          padding: 6px 12px;
+          border-radius: var(--radius-sm);
           border: 1px solid transparent;
           background: rgba(255, 255, 255, 0.02);
-          color: #a0aec0;
-          font-size: 0.85rem;
-          font-weight: 600;
+          color: var(--text-secondary);
+          font-size: 0.8rem;
+          font-weight: 500;
           cursor: pointer;
           white-space: nowrap;
-          transition: all 0.2s;
+          flex-shrink: 0;
+          transition: var(--transition-smooth);
         }
 
         .tab-btn:hover {
-          color: #fff;
-          background: rgba(255, 255, 255, 0.06);
+          color: var(--text-main);
+          background: rgba(255, 255, 255, 0.04);
         }
 
         .tab-btn.active {
-          background: rgba(102, 252, 241, 0.1);
-          border-color: var(--primary-color, #66fcf1);
-          color: var(--primary-color, #66fcf1);
+          background: var(--bg-surface);
+          border-color: var(--border-default);
+          color: var(--text-main);
+          font-weight: 600;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .search-sort-group {
@@ -210,16 +212,17 @@ export default function ReactionList({ reactions, onEditClick, onDeleteClick }) 
         .list-search-input {
           width: 100%;
           padding: 8px 30px 8px 12px;
-          border-radius: 6px;
+          border-radius: var(--radius-sm);
           background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: #fff;
-          font-size: 0.85rem;
+          border: 1px solid var(--border-default);
+          color: var(--text-main);
+          font-size: 0.8rem;
           outline: none;
+          transition: var(--transition-smooth);
         }
 
         .list-search-input:focus {
-          border-color: var(--primary-color, #66fcf1);
+          border-color: var(--primary-color);
         }
 
         .btn-clear-search {
@@ -229,14 +232,14 @@ export default function ReactionList({ reactions, onEditClick, onDeleteClick }) 
           transform: translateY(-50%);
           background: transparent;
           border: none;
-          color: #718096;
+          color: var(--text-muted);
           cursor: pointer;
           font-size: 0.85rem;
           padding: 0;
         }
 
         .btn-clear-search:hover {
-          color: #fff;
+          color: var(--text-main);
         }
 
         .sort-selector-wrapper {
@@ -245,19 +248,24 @@ export default function ReactionList({ reactions, onEditClick, onDeleteClick }) 
 
         .list-sort-select {
           padding: 8px 12px;
-          border-radius: 6px;
+          border-radius: var(--radius-sm);
           background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: #fff;
-          font-size: 0.85rem;
+          border: 1px solid var(--border-default);
+          color: var(--text-main);
+          font-size: 0.8rem;
           outline: none;
           cursor: pointer;
+          transition: var(--transition-smooth);
+        }
+
+        .list-sort-select:focus {
+          border-color: var(--primary-color);
         }
 
         .reaction-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 20px;
+          gap: 16px;
         }
 
         @media (min-width: 992px) {
