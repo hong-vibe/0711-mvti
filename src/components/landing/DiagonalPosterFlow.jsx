@@ -5,7 +5,7 @@ import moviesData from '../../data/movies.json';
  * 랜딩 페이지 사선 포스터 흐름 애니메이션 컴포넌트
  * @param {object} props { onMovieClick, selectedMovieIds }
  */
-export default function DiagonalPosterFlow({ onMovieClick, selectedMovieIds }) {
+export default function DiagonalPosterFlow({ onMovieClick, selectedMovieIds = [], reactions = [] }) {
   // 온보딩에 노출하기 적절하고 인지도가 높은 48편만 골라 3개 레인(각 16편)으로 분할
   // seed 데이터 중 8개 장르별로 균등하게 6편씩 총 48편 추출
   const targetMovies = React.useMemo(() => {
@@ -21,6 +21,14 @@ export default function DiagonalPosterFlow({ onMovieClick, selectedMovieIds }) {
     return selected;
   }, []);
 
+  const reactionMap = React.useMemo(() => {
+    const map = {};
+    reactions.forEach(r => {
+      map[r.movieId] = r.sentiment;
+    });
+    return map;
+  }, [reactions]);
+
   const row1 = targetMovies.slice(0, 16);
   const row2 = targetMovies.slice(16, 32);
   const row3 = targetMovies.slice(32, 48);
@@ -32,38 +40,56 @@ export default function DiagonalPosterFlow({ onMovieClick, selectedMovieIds }) {
     <div className="poster-flow-container" aria-label="영화 선택 포스터 플로우">
       {/* 1번 레인 (왼쪽 스크롤) */}
       <div className="poster-row flow-left">
-        {getTripleArray(row1).map((movie, idx) => (
-          <PosterItem
-            key={`row1-${movie.id}-${idx}`}
-            movie={movie}
-            isSelected={selectedMovieIds.includes(movie.id)}
-            onClick={() => onMovieClick(movie)}
-          />
-        ))}
+        {getTripleArray(row1).map((movie, idx) => {
+          const sentiment = reactionMap[movie.id];
+          const isSelected = selectedMovieIds.includes(movie.id) || !!sentiment;
+          return (
+            <PosterItem
+              key={`row1-${movie.id}-${idx}`}
+              movie={movie}
+              isSelected={isSelected}
+              sentiment={sentiment}
+              onClick={() => onMovieClick(movie)}
+              index={idx}
+            />
+          );
+        })}
       </div>
 
       {/* 2번 레인 (오른쪽 스크롤) */}
       <div className="poster-row flow-right">
-        {getTripleArray(row2).map((movie, idx) => (
-          <PosterItem
-            key={`row2-${movie.id}-${idx}`}
-            movie={movie}
-            isSelected={selectedMovieIds.includes(movie.id)}
-            onClick={() => onMovieClick(movie)}
-          />
-        ))}
+        {getTripleArray(row2).map((movie, idx) => {
+          const sentiment = reactionMap[movie.id];
+          const isSelected = selectedMovieIds.includes(movie.id) || !!sentiment;
+          return (
+            <PosterItem
+              key={`row2-${movie.id}-${idx}`}
+              movie={movie}
+              isSelected={isSelected}
+              sentiment={sentiment}
+              onClick={() => onMovieClick(movie)}
+              index={idx}
+            />
+          );
+        })}
       </div>
 
       {/* 3번 레인 (왼쪽 스크롤) */}
       <div className="poster-row flow-left">
-        {getTripleArray(row3).map((movie, idx) => (
-          <PosterItem
-            key={`row3-${movie.id}-${idx}`}
-            movie={movie}
-            isSelected={selectedMovieIds.includes(movie.id)}
-            onClick={() => onMovieClick(movie)}
-          />
-        ))}
+        {getTripleArray(row3).map((movie, idx) => {
+          const sentiment = reactionMap[movie.id];
+          const isSelected = selectedMovieIds.includes(movie.id) || !!sentiment;
+          return (
+            <PosterItem
+              key={`row3-${movie.id}-${idx}`}
+              movie={movie}
+              isSelected={isSelected}
+              sentiment={sentiment}
+              onClick={() => onMovieClick(movie)}
+              index={idx}
+            />
+          );
+        })}
       </div>
     </div>
   );
@@ -72,7 +98,7 @@ export default function DiagonalPosterFlow({ onMovieClick, selectedMovieIds }) {
 /**
  * 개별 포스터 아이템 컴포넌트 (내부 최적화)
  */
-function PosterItem({ movie, isSelected, onClick }) {
+function PosterItem({ movie, isSelected, sentiment, onClick, index }) {
   const [imgSrc, setImgSrc] = React.useState(movie.posterPath);
 
   const handleImageError = () => {
@@ -86,13 +112,27 @@ function PosterItem({ movie, isSelected, onClick }) {
     }
   };
 
+  const renderBadge = () => {
+    if (sentiment === 'like') {
+      return <div className="selected-badge badge-like">❤️ 내 취향</div>;
+    }
+    if (sentiment === 'dislike') {
+      return <div className="selected-badge badge-dislike">🤷 별로</div>;
+    }
+    if (isSelected) {
+      return <div className="selected-badge">✓ 선택됨</div>;
+    }
+    return null;
+  };
+
   return (
     <div
       role="button"
       tabIndex={0}
-      className={`poster-card ${isSelected ? 'selected' : ''}`}
+      className={`poster-card ${isSelected ? 'selected' : ''} ${sentiment ? `sentiment-${sentiment}` : ''}`}
       onClick={onClick}
       onKeyDown={handleKeyDown}
+      style={{ animationDelay: `${(index % 16) * 0.05}s` }}
       aria-label={`${movie.titleKo} (${movie.releaseYear}년)`}
       aria-pressed={isSelected}
     >
@@ -106,7 +146,7 @@ function PosterItem({ movie, isSelected, onClick }) {
         <p className="poster-title">{movie.titleKo}</p>
         <span className="poster-genre">{movie.primaryGenre}</span>
       </div>
-      {isSelected && <div className="selected-badge">✓ 선택됨</div>}
+      {renderBadge()}
 
       <style jsx>{`
         .poster-card {
@@ -121,6 +161,14 @@ function PosterItem({ movie, isSelected, onClick }) {
           box-shadow: 0 4px 15px rgba(0,0,0,0.5);
           transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
           border: 2px solid transparent;
+          opacity: 0;
+          animation: cardFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes cardFadeIn {
+          to {
+            opacity: 1;
+          }
         }
 
         .poster-card:hover, .poster-card:focus-visible {
@@ -133,6 +181,16 @@ function PosterItem({ movie, isSelected, onClick }) {
 
         .poster-card.selected {
           border-color: var(--primary-color);
+        }
+
+        .poster-card.sentiment-like {
+          border-color: #fc8181;
+          box-shadow: 0 0 15px rgba(229, 62, 109, 0.4);
+        }
+
+        .poster-card.sentiment-dislike {
+          border-color: #fbd38d;
+          box-shadow: 0 0 15px rgba(221, 107, 32, 0.4);
         }
 
         img {
@@ -179,11 +237,23 @@ function PosterItem({ movie, isSelected, onClick }) {
           right: 10px;
           background: var(--primary-color);
           color: var(--bg-color);
-          font-size: 0.75rem;
+          font-size: 0.7rem;
           font-weight: 700;
           padding: 4px 8px;
           border-radius: 20px;
           box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .selected-badge.badge-like {
+          background: #e53e3e;
+          color: #fff;
+          box-shadow: 0 2px 8px rgba(229, 62, 109, 0.4);
+        }
+
+        .selected-badge.badge-dislike {
+          background: #dd6b20;
+          color: #fff;
+          box-shadow: 0 2px 8px rgba(221, 107, 32, 0.4);
         }
       `}</style>
     </div>
