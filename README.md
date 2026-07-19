@@ -31,11 +31,10 @@
 
 | 화면 | 설명 | 캡처 |
 | :--- | :--- | :--- |
-| 메인 목록 화면 | 저장된 취향 기록 목록을 확인하는 취향 기록실 화면 | ![메인 목록 화면](./docs/screenshots/current-v1/07-my-taste-crud.png) |
-| 항목 추가 화면 | 실시간 검색을 통해 새로운 영화 반응을 추가하는 화면 | ![항목 추가 화면](./docs/screenshots/current-v1/07-my-taste-crud.png) |
-| 항목 수정 화면 | 등록된 영화 반응의 별점 강도 및 감상평 메모를 변경하는 수정 모달 화면 | ![항목 수정 화면](./docs/screenshots/current-v1/07-my-taste-crud.png) |
-| 항목 삭제 화면 | 삭제 버튼 클릭 시 최종 의사를 묻는 재확인 다이얼로그와 삭제 반영 후 화면 | ![항목 삭제 화면](./docs/screenshots/current-v1/07-my-taste-crud.png) |
-| 빈 상태 또는 오류 상태 | 온보딩 최소 영화(6편) 미달 시 나타나는 진단 진행도 빈 상태 화면 | ![빈 상태 또는 오류 상태](./docs/screenshots/current-v1/08-empty-state.png) |
+| 모바일 화면 | 모바일 뷰포트에서 레이아웃 및 반응형 디자인 확인 | ![모바일 화면](./docs/screenshots/current-v1/10-mobile-width.png) |
+| 포스터 선택 화면 | 포스터 선택 플로우 및 스테가드 애니메이션 | ![포스터 선택 화면](./docs/screenshots/current-v1/01-poster-selection.png) |
+| MBTI 입력 화면 | MBTI 약식 테스트 입력 단계 | ![MBTI 입력 화면](./docs/screenshots/current-v1/04-mbti-input.png) |
+| 일일 추천 화면 | 하루 3개 추천 슬롯 UI | ![일일 추천 화면](./docs/screenshots/current-v1/06-daily-recommendation.png) |
 
 ---
 

@@ -55,7 +55,7 @@ export default function MyTastePage() {
   return (
     <div className="taste-page-container">
       <div className="taste-page-header">
-        <h2 className="page-title">📝 내 취향 기록 (CRUD)</h2>
+        <h2 className="page-title">내 취향 기록</h2>
         <p className="page-description">
           선호하거나 불호인 영화들을 상세하게 수정 및 추가할 수 있습니다. 
           여기에 축적되는 정보들이 최종 MVTI 및 추천 모델의 기반 데이터로 동작합니다.
@@ -71,16 +71,16 @@ export default function MyTastePage() {
           />
 
           <div className="analysis-navigation-card glass-panel">
-            <h4>📊 현재 기록 기반 진단하기</h4>
+            <h4>현재 기록 기반 진단하기</h4>
             <p>선호 3편, 불호 3편 이상 기록되면 보다 신뢰도 높은 MVTI 분석 결과를 받아보실 수 있습니다.</p>
             <div className="nav-stats">
               <div className="stat-item">
                 <span className="stat-num">{reactions.filter(r => r.sentiment === 'like').length}</span>
-                <span className="stat-label">선호(Like)</span>
+                <span className="stat-label">내 취향 (Like)</span>
               </div>
               <div className="stat-item">
                 <span className="stat-num">{reactions.filter(r => r.sentiment === 'dislike').length}</span>
-                <span className="stat-label">불호(Dislike)</span>
+                <span className="stat-label">나는 별로 (Dislike)</span>
               </div>
             </div>
             <button 
@@ -131,19 +131,21 @@ export default function MyTastePage() {
 
         .taste-page-header {
           margin-bottom: 30px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid var(--border-subtle);
         }
 
         .page-title {
-          font-size: 1.8rem;
+          font-size: 1.5rem;
           font-weight: 800;
-          color: #fff;
+          color: var(--text-main);
           margin-top: 0;
           margin-bottom: 8px;
         }
 
         .page-description {
-          font-size: 0.95rem;
-          color: var(--text-desc, #a0aec0);
+          font-size: 0.9rem;
+          color: var(--text-secondary);
           margin: 0;
           line-height: 1.6;
         }
@@ -156,7 +158,7 @@ export default function MyTastePage() {
 
         @media (min-width: 992px) {
           .taste-grid {
-            grid-template-columns: 350px 1fr;
+            grid-template-columns: 320px 1fr;
           }
         }
 
@@ -168,73 +170,76 @@ export default function MyTastePage() {
 
         .analysis-navigation-card {
           padding: 20px;
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          background: var(--bg-elevated);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-lg);
         }
 
         .analysis-navigation-card h4 {
           margin-top: 0;
           margin-bottom: 8px;
-          color: #fff;
-          font-size: 1rem;
+          color: var(--text-main);
+          font-size: 0.95rem;
           font-weight: 700;
         }
 
         .analysis-navigation-card p {
           font-size: 0.8rem;
-          color: #a0aec0;
+          color: var(--text-secondary);
           line-height: 1.5;
           margin-bottom: 20px;
         }
 
         .nav-stats {
           display: flex;
-          gap: 16px;
+          gap: 12px;
           margin-bottom: 20px;
         }
 
         .stat-item {
           flex: 1;
           background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 8px;
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-sm);
           padding: 10px;
           text-align: center;
         }
 
         .stat-num {
           display: block;
-          font-size: 1.4rem;
+          font-size: 1.3rem;
           font-weight: 700;
-          color: var(--primary-color, #66fcf1);
+          color: var(--primary-color);
         }
 
         .stat-label {
-          font-size: 0.75rem;
-          color: #718096;
+          font-size: 0.7rem;
+          color: var(--text-muted);
           margin-top: 2px;
           display: block;
+          font-weight: 500;
         }
 
         .btn-primary {
-          background: linear-gradient(135deg, var(--secondary-color, #c8a2c8) 0%, var(--primary-color, #66fcf1) 100%);
+          background: var(--primary-color);
           border: none;
-          color: #121212;
-          font-family: var(--font-title);
-          font-weight: 700;
+          color: var(--bg-color);
+          font-family: var(--font-body);
+          font-weight: 600;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: var(--transition-smooth);
         }
 
         .btn-full {
           width: 100%;
           padding: 12px;
-          border-radius: 8px;
-          font-size: 0.9rem;
+          border-radius: var(--radius-md);
+          font-size: 0.85rem;
         }
 
         .btn-primary:hover {
+          opacity: 0.9;
           transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(102, 252, 241, 0.25);
         }
 
         @keyframes fadeIn {

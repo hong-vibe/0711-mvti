@@ -99,7 +99,7 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
 
   return (
     <div className="reaction-form-container glass-panel">
-      <h3 className="form-title">🍿 새로운 영화 취향 기록하기</h3>
+      <h3 className="form-title">영화 반응 추가</h3>
       
       {!selectedMovie ? (
         <div className="search-section" ref={dropdownRef}>
@@ -157,21 +157,14 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
                   className={`btn-sentiment like ${sentiment === 'like' ? 'active' : ''}`}
                   onClick={() => setSentiment('like')}
                 >
-                  ❤️ 좋았어요
+                  ❤️ 내 취향
                 </button>
                 <button
                   type="button"
                   className={`btn-sentiment dislike ${sentiment === 'dislike' ? 'active' : ''}`}
                   onClick={() => setSentiment('dislike')}
                 >
-                  👎 별로였어요
-                </button>
-                <button
-                  type="button"
-                  className={`btn-sentiment neutral ${sentiment === 'neutral' ? 'active' : ''}`}
-                  onClick={() => setSentiment('neutral')}
-                >
-                  😐 그냥 그래요
+                  🤷 나는 별로
                 </button>
               </div>
             </div>
@@ -278,8 +271,7 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
         }
 
         .search-input:focus {
-          border-color: var(--primary-color, #66fcf1);
-          box-shadow: 0 0 10px rgba(102, 252, 241, 0.1);
+          border-color: var(--primary-color);
         }
 
         .search-icon {
@@ -294,17 +286,16 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
           top: 100%;
           left: 0;
           right: 0;
-          background: rgba(15, 22, 38, 0.98);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-radius: 8px;
+          background: var(--bg-elevated);
+          border: 1px solid var(--border-default);
+          border-radius: var(--radius-md);
           margin-top: 5px;
           padding: 0;
           list-style: none;
           max-height: 280px;
           overflow-y: auto;
           z-index: 1000;
-          backdrop-filter: blur(10px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         }
 
         .dropdown-item {
@@ -317,7 +308,7 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
         }
 
         .dropdown-item:hover {
-          background: rgba(102, 252, 241, 0.1);
+          background: rgba(255, 255, 255, 0.04);
         }
 
         .dropdown-poster {
@@ -390,7 +381,7 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
         .btn-change-movie {
           background: transparent;
           border: none;
-          color: var(--secondary-color, #c8a2c8);
+          color: var(--accent-warm);
           font-size: 0.8rem;
           text-decoration: underline;
           cursor: pointer;
@@ -440,11 +431,7 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
           color: #fbd38d;
         }
 
-        .btn-sentiment.neutral.active {
-          background: rgba(74, 85, 104, 0.3);
-          border-color: #718096;
-          color: #e2e8f0;
-        }
+
 
         .strength-selector {
           display: flex;
@@ -465,9 +452,9 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
         }
 
         .btn-strength.active {
-          background: rgba(102, 252, 241, 0.12);
-          border-color: var(--primary-color, #66fcf1);
-          color: var(--primary-color, #66fcf1);
+          background: var(--primary-muted);
+          border-color: var(--primary-color);
+          color: var(--primary-color);
         }
 
         .form-select {
@@ -495,7 +482,7 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
         }
 
         .form-textarea:focus {
-          border-color: var(--primary-color, #66fcf1);
+          border-color: var(--primary-color);
         }
 
         .textarea-counter {
@@ -540,19 +527,19 @@ export default function ReactionForm({ onAddSuccess, existingMovieIds = [] }) {
 
         .btn-submit {
           padding: 10px 24px;
-          border-radius: 8px;
-          background: linear-gradient(135deg, var(--secondary-color, #c8a2c8) 0%, var(--primary-color, #66fcf1) 100%);
+          border-radius: var(--radius-md);
+          background: var(--primary-color);
           border: none;
-          color: #121212;
-          font-weight: 700;
+          color: var(--bg-color);
+          font-weight: 600;
           font-size: 0.9rem;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: var(--transition-smooth);
         }
 
         .btn-submit:hover {
+          opacity: 0.9;
           transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(102, 252, 241, 0.25);
         }
       `}</style>
     </div>

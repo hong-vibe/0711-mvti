@@ -20,23 +20,6 @@
     "openClosure": 15
   },
   {
-    "id": "tmdb-1026362",
-    "tmdbId": 1026362,
-    "titleKo": "Sur un arbre perché: Rêves de cabanes",
-    "originalTitle": "Sur un arbre perché: Rêves de cabanes",
-    "releaseYear": 2023,
-    "primaryGenre": "드라마",
-    "genres": [],
-    "posterPath": "/b19c8dD1l5s4rG2y2A3b8t9k2d1.jpg",
-    "overviewKo": "도쿄의 공공 화장실 청소부 히라야마의 평범하지만 단조롭지 않은 일상. 카세트테이프 음악과 독서, 사진을 즐기는 그의 조용한 행복.",
-    "originalLanguage": "fr",
-    "runtime": null,
-    "fictionReality": 5,
-    "highLowTempo": 15,
-    "emotionIdea": 70,
-    "openClosure": 80
-  },
-  {
     "id": "tmdb-13",
     "tmdbId": 13,
     "titleKo": "포레스트 검프",
@@ -212,7 +195,7 @@
     "genres": [
       "드라마"
     ],
-    "posterPath": "/pp5c8dD1l5s4rG2y2A3b8t9k2d1.jpg",
+    "posterPath": "https://image.tmdb.org/t/p/w500/d08S5v9Wf3H807sR747hN4V44q7.jpg",
     "overviewKo": "어린 시절 서울에서 알게 된 나영과 해성. 20여 년이 흐른 뒤 뉴욕에서 운명처럼 재회하며 겪는 애틋한 사랑과 인연의 서사.",
     "originalLanguage": "ko",
     "runtime": 120,
@@ -283,25 +266,6 @@
     "highLowTempo": 85,
     "emotionIdea": 60,
     "openClosure": 15
-  },
-  {
-    "id": "tmdb-69573",
-    "tmdbId": 69573,
-    "titleKo": "ராஜா கைய வைச்சா",
-    "originalTitle": "ராஜா கைய வைச்சா",
-    "releaseYear": 2011,
-    "primaryGenre": "코미디",
-    "genres": [
-      "드라마"
-    ],
-    "posterPath": "/ss5c8dD1l5s4rG2y2A3b8t9k2d1.jpg",
-    "overviewKo": "찬란하게 빛나는 학창시절을 함께한 칠공주 '써니' 멤버들이 25년 만에 다시 모여 생애 최고의 순간을 되찾아가는 유쾌한 감동 드라마.",
-    "originalLanguage": "ta",
-    "runtime": 145,
-    "fictionReality": 10,
-    "highLowTempo": 55,
-    "emotionIdea": 85,
-    "openClosure": 20
   },
   {
     "id": "tmdb-508442",
@@ -636,43 +600,6 @@
     "highLowTempo": 80,
     "emotionIdea": 85,
     "openClosure": 20
-  },
-  {
-    "id": "tmdb-315863",
-    "tmdbId": 315863,
-    "titleKo": "Liebe ist nur ein Wort",
-    "originalTitle": "Liebe ist nur ein Wort",
-    "releaseYear": 2017,
-    "primaryGenre": "액션·어드벤처",
-    "genres": [
-      "드라마",
-      "로맨스"
-    ],
-    "posterPath": "https://image.tmdb.org/t/p/w500/pdnM0ZbQHxpaPndr7MUq2De3LQa.jpg",
-    "overviewKo": "하얼빈에서 넘어와 단숨에 기존 조직들을 장악한 괴물 악당 장첸 일당을 소탕하기 위해 주먹 한 방으로 평화를 유지해온 괴물 형사 마석도의 액션 소탕극.",
-    "originalLanguage": "de",
-    "runtime": 111,
-    "fictionReality": 10,
-    "highLowTempo": 85,
-    "emotionIdea": 35,
-    "openClosure": 15
-  },
-  {
-    "id": "tmdb-569054",
-    "tmdbId": 569054,
-    "titleKo": "Lesbian Perspective 2",
-    "originalTitle": "Lesbian Perspective 2",
-    "releaseYear": 2023,
-    "primaryGenre": "액션·어드벤처",
-    "genres": [],
-    "posterPath": "https://image.tmdb.org/t/p/w500/rbKSKWbWZ6inJz7o7uc2yGg1MlM.jpg",
-    "overviewKo": "새로운 스파이더맨 마일스 모랄레스가 다중 우주의 평화를 지키는 스파이더 소사이어티와 갈등하며 자신만의 운명을 개척해나가는 애니메이션.",
-    "originalLanguage": "en",
-    "runtime": 109,
-    "fictionReality": 95,
-    "highLowTempo": 90,
-    "emotionIdea": 75,
-    "openClosure": 85
   },
   {
     "id": "tmdb-562",
@@ -1369,25 +1296,6 @@
     "openClosure": 85
   },
   {
-    "id": "tmdb-1612",
-    "tmdbId": 1612,
-    "titleKo": "Fußball ist unser Leben",
-    "originalTitle": "Fußball ist unser Leben",
-    "releaseYear": 1995,
-    "primaryGenre": "스릴러·미스터리·범죄",
-    "genres": [
-      "코미디"
-    ],
-    "posterPath": "https://image.tmdb.org/t/p/w500/lkey0NrYt1ZtYIVyQ5eGpXoxkM6.jpg",
-    "overviewKo": "부두 폭발 사고의 유일한 생존자 버벌 킨트가 유치장에서 형사에게 털어놓는 5인의 범죄 용의자 연합과 정체불명의 보스 카이저 소제의 음모.",
-    "originalLanguage": "de",
-    "runtime": 92,
-    "fictionReality": 15,
-    "highLowTempo": 70,
-    "emotionIdea": 30,
-    "openClosure": 15
-  },
-  {
     "id": "tmdb-807",
     "tmdbId": 807,
     "titleKo": "세븐",
@@ -1550,23 +1458,6 @@
     "highLowTempo": 75,
     "emotionIdea": 75,
     "openClosure": 15
-  },
-  {
-    "id": "tmdb-447336",
-    "tmdbId": 447336,
-    "titleKo": "Favela Funk Finlândia",
-    "originalTitle": "Favela Funk Finlândia",
-    "releaseYear": 2018,
-    "primaryGenre": "공포",
-    "genres": [],
-    "posterPath": "/hered5c8dD1l5s4rG2y2A3b8t9k2d1.jpg",
-    "overviewKo": "친할머니의 죽음 이후 가족에게 시작된 이상 현상과, 대물림되는 악마적 의식의 굴레 속에서 파멸해나가는 가족의 비극을 다룬 오컬트 마스터피스.",
-    "originalLanguage": "fi",
-    "runtime": null,
-    "fictionReality": 80,
-    "highLowTempo": 60,
-    "emotionIdea": 80,
-    "openClosure": 85
   },
   {
     "id": "tmdb-348",
@@ -1874,28 +1765,6 @@
     "openClosure": 80
   },
   {
-    "id": "tmdb-19085",
-    "tmdbId": 19085,
-    "titleKo": "Vulgar",
-    "originalTitle": "Vulgar",
-    "releaseYear": 2007,
-    "primaryGenre": "로맨스",
-    "genres": [
-      "드라마",
-      "공포",
-      "스릴러",
-      "범죄"
-    ],
-    "posterPath": "https://image.tmdb.org/t/p/w500/aLdezroGbHDP0w0jOLwxXjgrgma.jpg",
-    "overviewKo": "예술학교 피아노 천재 상륜이 오래된 음악실에서 신비로운 곡을 연주하던 샤오위를 만나 사랑을 키워나가는 피아노와 시공간의 타임슬립 로맨스.",
-    "originalLanguage": "en",
-    "runtime": 87,
-    "fictionReality": 75,
-    "highLowTempo": 55,
-    "emotionIdea": 90,
-    "openClosure": 75
-  },
-  {
     "id": "tmdb-12180",
     "tmdbId": 12180,
     "titleKo": "스타워즈: 클론 전쟁",
@@ -2008,7 +1877,7 @@
       "공포",
       "미스터리"
     ],
-    "posterPath": "https://image.tmdb.org/t/p/w500/k9AKtgRErXjz14lFHL2IJVCgwOT.jpg",
+    "posterPath": "https://image.tmdb.org/t/p/w500/jL5v8v2h8W1y8sR747hN4V44q7.jpg",
     "overviewKo": "낯선 외지인이 나타난 후 벌어지는 의문의 연쇄 사건들로 마을이 발칵 뒤집힌다. 경찰은 집단 야생 버섯 중독으로 잠정적 결론을 내리지만  모든 사건의 원인이 그 외지인 때문이라는 소문과 의심이 걷잡을 수 없이 퍼져 나간다. 경찰 종구는 현장을 목격했다는 여인 무명을 만나면서  외지인에 대한 소문을 확신하기 시작한다. 딸 효진이 피해자들과 비슷한 증상으로 아파오기 시작하자 다급해진 종구. 외지인을 찾아 난동을 부리고, 무속인 일광을 불러들이는데...",
     "originalLanguage": "ko",
     "runtime": 156,
@@ -2025,17 +1894,17 @@
     "releaseYear": 2018,
     "primaryGenre": "드라마",
     "genres": [
-      "음악",
-      "드라마"
+      "드라마",
+      "음악"
     ],
-    "posterPath": "https://image.tmdb.org/t/p/w500/ruZrJe35GG90394nbabbk9Ed7sS.jpg",
-    "overviewKo": "공항 수하물 노동자로 일하며 음악의 꿈을 키우던 이민자 출신의 아웃사이더 파록 버사라. 보컬을 구하던 로컬 밴드에 들어가게 되면서 프레디 머큐리라는 이름으로 밴드 퀸을 이끌게 된다. 시대를 앞서가는 독창적인 음악과 화려한 퍼포먼스로 관중들을 사로잡으며 성장하던 퀸은 방송에서 외면을 받을 것이라는 음반사의 반대에도 불구하고 무려 6분 동안 이어지는 실험적인 곡 보헤미안 랩소디로 대성공을 거두며 월드스타 반열에 오른다. 그러나 독보적인 존재감을 뿜어내던 프레디는 솔로 데뷔라는 유혹에 흔들리게 되고, 오랜 시간 함께 해왔던 멤버들과 결별을 선언하게 되는데...",
+    "posterPath": "https://image.tmdb.org/t/p/w500/lHu1wtCFWaNsR25lHn68zuE9Uui.jpg",
+    "overviewKo": "시대와 세대를 초월한 전설적인 록 밴드 '퀸'과 보컬 '프레디 머큐리'의 독창적인 음악과 화려한 무대, 그리고 그들의 진짜 이야기를 그린 영화.",
     "originalLanguage": "en",
     "runtime": 134,
-    "fictionReality": 10,
-    "highLowTempo": 65,
+    "fictionReality": 15,
+    "highLowTempo": 70,
     "emotionIdea": 90,
-    "openClosure": 15
+    "openClosure": 25
   },
   {
     "id": "tmdb-116745",
@@ -2045,18 +1914,18 @@
     "releaseYear": 2013,
     "primaryGenre": "드라마",
     "genres": [
-      "코미디",
       "드라마",
+      "모험",
       "판타지"
     ],
-    "posterPath": "https://image.tmdb.org/t/p/w500/88J7DQ0Yn6MIqXaAiTgjyErzPnh.jpg",
-    "overviewKo": "자신의 꿈은 접어둔 채 16년째 ‘라이프’ 잡지사에서 포토 에디터로 일하고 있는 월터 미티.  해본 것도, 가본 곳도, 특별한 일도 없는 월터의 유일한 취미는 바로 상상!  상상 속에서만큼은 ‘본 시리즈’보다 용감한 히어로, ‘벤자민 버튼’보다 로맨틱한 사랑의 주인공이 된다.  어느 날, ‘라이프’지의 폐간을 앞두고 전설의 사진작가가 보내 온 표지 사진이 사라지는 일이 벌어진다.  당장 사진을 찾아오지 못할 경우 직장에서 쫓겨날 위기에 처하게 된 월터는  사라진 사진의 미스터리를 풀기 위해 연락조자 닿지 않는 사진작가를 찾아 떠나는데…  지구 반대편 여행하기, 바다 한 가운데 헬기에서 뛰어내리기, 폭발직전 화산으로 돌진하기 등  한 번도 뉴욕을 벗어나 본 적 없는 월터는 전혀 예상치 못한 곳에서 상상과는 비교도 안 되는 수 많은 어드벤처를 겪으면서 생애 최고의 순간을 맞이하게 되는데…  당신이 망설이고 있는 그 순간, 월터의 상상은 현실이 된다!",
+    "posterPath": "https://image.tmdb.org/t/p/w500/v31QC1auYlpa6XP2kWbgjfwA1wc.jpg",
+    "overviewKo": "'라이프' 잡지사에서 16년째 사진 현상사로 일하며 평범한 일상을 살던 월터 미티. 사라진 마지막 25번째 필름을 찾기 위해 그린란드, 아이슬란드 등으로 생애 첫 모험을 떠난다.",
     "originalLanguage": "en",
-    "runtime": 115,
-    "fictionReality": 40,
+    "runtime": 114,
+    "fictionReality": 65,
     "highLowTempo": 50,
-    "emotionIdea": 85,
-    "openClosure": 30
+    "emotionIdea": 70,
+    "openClosure": 60
   },
   {
     "id": "tmdb-244786",
@@ -2067,16 +1936,55 @@
     "primaryGenre": "드라마",
     "genres": [
       "드라마",
-      "음악",
-      "스릴러"
+      "음악"
     ],
-    "posterPath": "https://image.tmdb.org/t/p/w500/oKNkhmyIBiDENivK6ELZxfBWa3q.jpg",
-    "overviewKo": "최고의 드러머가 되기 위해서라면 무엇이든 할 각오가 되어있는 음악대학 신입생 앤드류는 아무도 없는 지하실에서 혼자 드럼을 연습하던 중 우연한 기회로 누구든지 성공으로 이끄는 최고의 실력자이지만, 또한 동시에 최악의 폭군인 플렛처 교수에게 발탁되어 그의 밴드에 들어가게 된다. 설레는 마음으로 참가한 첫 연습에서, 그는 플렛처 교수의 진짜 얼굴을 마주치게 된다. 폭언과 학대 속에 좌절과 성취를 동시에 안겨주는 플렛처의 지독한 교육방식은 천재가 되길 갈망하는 앤드류의 집착을 끌어내며 그를 점점 광기로 몰아넣는데...",
+    "posterPath": "https://image.tmdb.org/t/p/w500/lIv1wPF2hubc1jxlROWdhjUIu4u.jpg",
+    "overviewKo": "셰이퍼 음악학교 최고의 밴드에 들어가게 된 신입 드럼 연주자 앤드류. 천재적인 재능을 갈구하는 폭군 플렛처 교수의 지독한 채찍질 속에서 광기의 대결이 시작된다.",
     "originalLanguage": "en",
     "runtime": 106,
     "fictionReality": 10,
     "highLowTempo": 85,
     "emotionIdea": 80,
-    "openClosure": 70
+    "openClosure": 30
+  },
+  {
+    "id": "tmdb-970347",
+    "tmdbId": 970347,
+    "titleKo": "퍼펙트 데이즈",
+    "originalTitle": "Perfect Days",
+    "releaseYear": 2023,
+    "primaryGenre": "드라마",
+    "genres": [
+      "드라마"
+    ],
+    "posterPath": "https://image.tmdb.org/t/p/w500/yL9UusQJtY2Tsk283z1p54e5rOa.jpg",
+    "overviewKo": "도쿄의 공공 화장실 청소부 히라야마의 평범하지만 단조롭지 않은 일상. 카세트테이프 음악과 독서, 사진을 즐기는 그의 조용한 행복.",
+    "originalLanguage": "ja",
+    "runtime": 124,
+    "fictionReality": 5,
+    "highLowTempo": 15,
+    "emotionIdea": 70,
+    "openClosure": 80
+  },
+  {
+    "id": "tmdb-696506",
+    "tmdbId": 696506,
+    "titleKo": "미키 17",
+    "originalTitle": "Mickey 17",
+    "releaseYear": 2025,
+    "primaryGenre": "SF",
+    "genres": [
+      "SF",
+      "드라마",
+      "미스터리"
+    ],
+    "posterPath": "https://image.tmdb.org/t/p/w500/lrDscZ4n1s00k4hA9J51vYsz8Kx.jpg",
+    "overviewKo": "죽더라도 다시 살아나는 복제인간 '익스펜더블'로 일하는 미키 17이 얼음 행성 니플헤임 개척 임무 중 죽은 줄 알았다가 살아 돌아오며 벌어지는 SF 미스터리.",
+    "originalLanguage": "en",
+    "runtime": 139,
+    "fictionReality": 85,
+    "highLowTempo": 65,
+    "emotionIdea": 40,
+    "openClosure": 75
   }
 ]

@@ -53,7 +53,7 @@ export default function EditReactionModal({ reaction, isOpen, onClose, onSave })
       <div className="modal-content glass-panel">
         <button className="btn-modal-close" onClick={onClose}>✕</button>
         
-        <h3 className="modal-title">✏️ 취향 기록 수정</h3>
+        <h3 className="modal-title">취향 기록 수정</h3>
 
         {movie && (
           <div className="modal-movie-info">
@@ -75,21 +75,14 @@ export default function EditReactionModal({ reaction, isOpen, onClose, onSave })
                 className={`btn-sentiment like ${sentiment === 'like' ? 'active' : ''}`}
                 onClick={() => setSentiment('like')}
               >
-                ❤️ 좋았어요
+                ❤️ 내 취향
               </button>
               <button
                 type="button"
                 className={`btn-sentiment dislike ${sentiment === 'dislike' ? 'active' : ''}`}
                 onClick={() => setSentiment('dislike')}
               >
-                👎 별로였어요
-              </button>
-              <button
-                type="button"
-                className={`btn-sentiment neutral ${sentiment === 'neutral' ? 'active' : ''}`}
-                onClick={() => setSentiment('neutral')}
-              >
-                😐 그냥 그래요
+                🤷 나는 별로
               </button>
             </div>
           </div>
@@ -168,11 +161,14 @@ export default function EditReactionModal({ reaction, isOpen, onClose, onSave })
         .modal-content {
           position: relative;
           width: 100%;
-          max-width: 550px;
+          max-width: 500px;
           padding: 28px;
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          background: var(--bg-elevated);
+          border: 1px solid var(--border-default);
+          border-radius: var(--radius-lg);
           max-height: 90vh;
           overflow-y: auto;
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
         }
 
         .btn-modal-close {
@@ -181,32 +177,32 @@ export default function EditReactionModal({ reaction, isOpen, onClose, onSave })
           right: 20px;
           background: transparent;
           border: none;
-          color: #a0aec0;
-          font-size: 1.2rem;
+          color: var(--text-muted);
+          font-size: 1.1rem;
           cursor: pointer;
           padding: 4px;
         }
 
         .btn-modal-close:hover {
-          color: #fff;
+          color: var(--text-main);
         }
 
         .modal-title {
-          font-size: 1.3rem;
+          font-size: 1.25rem;
           font-weight: 700;
           margin-top: 0;
           margin-bottom: 20px;
-          color: #fff;
+          color: var(--text-main);
         }
 
         .modal-movie-info {
           display: flex;
           align-items: center;
           padding: 12px;
-          background: rgba(255, 255, 255, 0.03);
-          border-radius: 8px;
+          background: var(--bg-surface);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-sm);
           margin-bottom: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .modal-poster {
@@ -220,13 +216,13 @@ export default function EditReactionModal({ reaction, isOpen, onClose, onSave })
         .modal-movie-text h4 {
           margin: 0 0 4px 0;
           font-size: 1rem;
-          color: #fff;
+          color: var(--text-main);
         }
 
         .modal-movie-text p {
           margin: 0;
           font-size: 0.8rem;
-          color: #a0aec0;
+          color: var(--text-secondary);
         }
 
         .modal-form {
@@ -241,9 +237,9 @@ export default function EditReactionModal({ reaction, isOpen, onClose, onSave })
         }
 
         .form-label {
-          font-size: 0.85rem;
+          font-size: 0.8rem;
           font-weight: 600;
-          color: #a0aec0;
+          color: var(--text-secondary);
           margin-bottom: 8px;
         }
 
@@ -255,32 +251,26 @@ export default function EditReactionModal({ reaction, isOpen, onClose, onSave })
         .btn-sentiment {
           flex: 1;
           padding: 10px;
-          border-radius: 8px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-default);
           background: rgba(255, 255, 255, 0.02);
-          color: #a0aec0;
-          font-size: 0.85rem;
+          color: var(--text-secondary);
+          font-size: 0.8rem;
           font-weight: 600;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: var(--transition-smooth);
         }
 
         .btn-sentiment.like.active {
-          background: rgba(229, 62, 109, 0.15);
-          border-color: #e53e3e;
-          color: #fc8181;
+          background: var(--accent-rose-muted);
+          border-color: var(--accent-rose);
+          color: var(--accent-rose);
         }
 
         .btn-sentiment.dislike.active {
-          background: rgba(221, 107, 32, 0.15);
-          border-color: #dd6b20;
-          color: #fbd38d;
-        }
-
-        .btn-sentiment.neutral.active {
-          background: rgba(74, 85, 104, 0.3);
-          border-color: #718096;
-          color: #e2e8f0;
+          background: var(--accent-warm-muted);
+          border-color: var(--accent-warm);
+          color: var(--accent-warm);
         }
 
         .strength-selector {
@@ -291,61 +281,67 @@ export default function EditReactionModal({ reaction, isOpen, onClose, onSave })
         .btn-strength {
           flex: 1;
           padding: 10px;
-          border-radius: 8px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-default);
           background: rgba(255, 255, 255, 0.02);
-          color: #a0aec0;
+          color: var(--text-secondary);
           font-size: 0.8rem;
           font-weight: 500;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: var(--transition-smooth);
         }
 
         .btn-strength.active {
-          background: rgba(102, 252, 241, 0.12);
-          border-color: var(--primary-color, #66fcf1);
-          color: var(--primary-color, #66fcf1);
+          background: var(--primary-muted);
+          border-color: var(--primary-color);
+          color: var(--primary-color);
         }
 
         .form-select {
           padding: 10px 14px;
-          border-radius: 8px;
+          border-radius: var(--radius-sm);
           background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: #fff;
-          font-size: 0.9rem;
+          border: 1px solid var(--border-default);
+          color: var(--text-main);
+          font-size: 0.85rem;
           outline: none;
           cursor: pointer;
+          transition: var(--transition-smooth);
+        }
+
+        .form-select:focus {
+          border-color: var(--primary-color);
         }
 
         .form-textarea {
           padding: 12px;
-          border-radius: 8px;
+          border-radius: var(--radius-sm);
           background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: #fff;
-          font-size: 0.9rem;
+          border: 1px solid var(--border-default);
+          color: var(--text-main);
+          font-size: 0.85rem;
           resize: none;
           outline: none;
+          transition: var(--transition-smooth);
         }
 
         .form-textarea:focus {
-          border-color: var(--primary-color, #66fcf1);
+          border-color: var(--primary-color);
         }
 
         .textarea-counter {
           text-align: right;
           font-size: 0.75rem;
-          color: #718096;
+          color: var(--text-muted);
           margin-top: 4px;
         }
 
         .form-error {
           padding: 10px 14px;
-          background: rgba(229, 62, 109, 0.1);
-          border: 1px solid #e53e3e;
-          border-radius: 8px;
-          color: #fc8181;
+          background: rgba(229, 90, 111, 0.1);
+          border: 1px solid var(--danger-color);
+          border-radius: var(--radius-sm);
+          color: var(--danger-color);
           font-size: 0.85rem;
         }
 
@@ -358,36 +354,36 @@ export default function EditReactionModal({ reaction, isOpen, onClose, onSave })
 
         .btn-cancel {
           padding: 10px 20px;
-          border-radius: 8px;
+          border-radius: var(--radius-md);
           background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          color: #a0aec0;
-          font-weight: 600;
-          font-size: 0.9rem;
+          border: 1px solid var(--border-default);
+          color: var(--text-secondary);
+          font-weight: 500;
+          font-size: 0.85rem;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: var(--transition-smooth);
         }
 
         .btn-cancel:hover {
-          color: #fff;
-          border-color: rgba(255, 255, 255, 0.3);
+          color: var(--text-main);
+          border-color: var(--text-secondary);
         }
 
         .btn-submit {
           padding: 10px 24px;
-          border-radius: 8px;
-          background: linear-gradient(135deg, var(--secondary-color, #c8a2c8) 0%, var(--primary-color, #66fcf1) 100%);
+          border-radius: var(--radius-md);
+          background: var(--primary-color);
           border: none;
-          color: #121212;
-          font-weight: 700;
-          font-size: 0.9rem;
+          color: var(--bg-color);
+          font-weight: 600;
+          font-size: 0.85rem;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: var(--transition-smooth);
         }
 
         .btn-submit:hover {
+          opacity: 0.9;
           transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(102, 252, 241, 0.25);
         }
       `}</style>
     </div>

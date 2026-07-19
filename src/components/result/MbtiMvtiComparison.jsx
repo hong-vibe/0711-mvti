@@ -94,7 +94,7 @@ export default function MbtiMvtiComparison({ mbti, mvtiCode }) {
   return (
     <div className="comparison-container glass-panel">
       <div className="comparison-header">
-        <h3 className="comparison-title">🧠 MBTI ↔ MVTI 간극 분석</h3>
+        <h3 className="comparison-title">MBTI ↔ MVTI 간극 분석</h3>
         <div className="sync-score-badge">
           <span className="sync-label">취향 싱크로율</span>
           <span className="sync-value">{syncRate}%</span>
@@ -136,7 +136,9 @@ export default function MbtiMvtiComparison({ mbti, mvtiCode }) {
         .comparison-container {
           margin-top: 30px;
           padding: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: var(--bg-elevated);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-lg);
         }
 
         .comparison-header {
@@ -147,9 +149,9 @@ export default function MbtiMvtiComparison({ mbti, mvtiCode }) {
         }
 
         .comparison-title {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           font-weight: 700;
-          color: #fff;
+          color: var(--text-main);
           margin: 0;
         }
 
@@ -160,47 +162,47 @@ export default function MbtiMvtiComparison({ mbti, mvtiCode }) {
         }
 
         .sync-label {
-          font-size: 0.7rem;
-          color: #718096;
+          font-size: 0.65rem;
+          color: var(--text-muted);
           text-transform: uppercase;
+          letter-spacing: 0.05em;
         }
 
         .sync-value {
           font-size: 1.3rem;
           font-weight: 800;
-          color: var(--secondary-color, #c8a2c8);
-          text-shadow: 0 0 10px rgba(200, 162, 200, 0.2);
+          color: var(--primary-color);
         }
 
         .sync-status-text {
-          font-size: 0.9rem;
+          font-size: 0.85rem;
           font-weight: 600;
-          color: #e2e8f0;
+          color: var(--text-secondary);
           margin-top: 0;
           margin-bottom: 12px;
         }
 
         .sync-bar-track {
           width: 100%;
-          height: 6px;
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 3px;
+          height: 4px;
+          background: var(--border-subtle);
+          border-radius: 2px;
           margin-bottom: 24px;
           overflow: hidden;
         }
 
         .sync-bar-fill {
           height: 100%;
-          background: linear-gradient(90deg, var(--primary-color, #66fcf1) 0%, var(--secondary-color, #c8a2c8) 100%);
-          border-radius: 3px;
+          background: var(--primary-color);
+          border-radius: 2px;
           transition: width 1s ease-in-out;
         }
 
         .interpretation-box {
           position: relative;
-          background: rgba(102, 252, 241, 0.03);
-          border: 1px solid rgba(102, 252, 241, 0.08);
-          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.01);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-sm);
           padding: 16px 20px;
           margin-bottom: 24px;
         }
@@ -208,7 +210,7 @@ export default function MbtiMvtiComparison({ mbti, mvtiCode }) {
         .quote-mark {
           font-family: Georgia, serif;
           font-size: 2.2rem;
-          color: rgba(102, 252, 241, 0.3);
+          color: var(--text-muted);
           line-height: 0;
           height: 10px;
         }
@@ -220,29 +222,29 @@ export default function MbtiMvtiComparison({ mbti, mvtiCode }) {
 
         .interpretation-text {
           margin: 0;
-          font-size: 0.95rem;
-          color: #e2e8f0;
+          font-size: 0.9rem;
+          color: var(--text-secondary);
           line-height: 1.6;
           text-align: center;
         }
 
         .interpretation-text strong {
-          color: var(--primary-color, #66fcf1);
+          color: var(--primary-color);
           font-weight: 700;
         }
 
         .axis-match-list h4 {
           margin-top: 0;
           margin-bottom: 16px;
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           font-weight: 700;
-          color: #fff;
+          color: var(--text-main);
         }
 
         .match-item {
           background: rgba(255, 255, 255, 0.01);
-          border: 1px solid rgba(255, 255, 255, 0.03);
-          border-radius: 8px;
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-sm);
           padding: 12px 14px;
           margin-bottom: 12px;
         }
@@ -255,34 +257,34 @@ export default function MbtiMvtiComparison({ mbti, mvtiCode }) {
         }
 
         .item-axis-name {
-          font-size: 0.85rem;
+          font-size: 0.8rem;
           font-weight: 600;
-          color: #cbd5e0;
+          color: var(--text-secondary);
         }
 
         .item-match-badge {
-          font-size: 0.7rem;
+          font-size: 0.65rem;
           font-weight: 700;
           padding: 2px 6px;
-          border-radius: 4px;
+          border-radius: var(--radius-sm);
         }
 
         .item-match-badge.match {
-          background: rgba(102, 252, 241, 0.12);
-          color: var(--primary-color, #66fcf1);
-          border: 1px solid rgba(102, 252, 241, 0.3);
+          background: var(--primary-muted);
+          color: var(--primary-color);
+          border: 1px solid rgba(93, 228, 216, 0.2);
         }
 
         .item-match-badge.complement {
-          background: rgba(200, 162, 200, 0.12);
-          color: var(--secondary-color, #c8a2c8);
-          border: 1px solid rgba(200, 162, 200, 0.3);
+          background: var(--accent-warm-muted);
+          color: var(--accent-warm);
+          border: 1px solid rgba(232, 168, 124, 0.2);
         }
 
         .item-desc {
           margin: 0;
           font-size: 0.8rem;
-          color: #a0aec0;
+          color: var(--text-muted);
           line-height: 1.5;
         }
       `}</style>

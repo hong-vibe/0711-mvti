@@ -7,17 +7,31 @@ import React from 'react';
 export default function SelectionTray({ selectedMovies, onRemoveMovie, onSubmit, minRequired = 3, mode = 'like' }) {
   const count = selectedMovies.length;
   const isReady = count >= minRequired;
-  const progressPercent = Math.min((count / minRequired) * 100, 100);
+  const progressPercent = minRequired === 0 ? 100 : Math.min((count / minRequired) * 100, 100);
 
   const isLikeMode = mode === 'like';
+  const isOnboardingCompleted = minRequired === 0;
 
   // 모드별 텍스트 및 가이드 다이내믹 변경
   const titleText = isLikeMode ? "1단계: 좋아하는 명작 고르기" : "2단계: 굳이 싫어하는 명작 고르기";
-  const guideText = isLikeMode
-    ? (isReady ? "🎉 다음 단계(불호 영화 선택)로 진행할 수 있습니다." : `좋아하는 영화를 최소 ${minRequired}편 이상 선택해주세요.`)
-    : (isReady ? "🎉 준비 완료! 이제 성격(MBTI) 정보를 입력하러 갑니다." : `남들은 인생작이라 하지만, 나는 굳이 싫은 명작을 최소 ${minRequired}편 선택해주세요.`);
   
-  const buttonText = isLikeMode ? "다음 단계로" : "MBTI 입력하기";
+  let guideText = '';
+  if (isOnboardingCompleted) {
+    guideText = isLikeMode 
+      ? "💡 포스터를 누르면 즉시 '내 취향' 리스트에 가감 및 취향이 실시간 업데이트됩니다."
+      : "💡 포스터를 누르면 즉시 '나는 별로' 리스트에 가감 및 취향이 실시간 업데이트됩니다.";
+  } else {
+    guideText = isLikeMode
+      ? (isReady ? "🎉 다음 단계(불호 영화 선택)로 진행할 수 있습니다." : `좋아하는 영화를 최소 ${minRequired}편 이상 선택해주세요.`)
+      : (isReady ? "🎉 준비 완료! 이제 성격(MBTI) 정보를 입력하러 갑니다." : `남들은 인생작이라 하지만, 나는 굳이 싫은 명작을 최소 ${minRequired}편 선택해주세요.`);
+  }
+  
+  let buttonText = '';
+  if (isOnboardingCompleted) {
+    buttonText = isLikeMode ? "다음 (불호 편집) ➔" : "완료 (진단서로) ➔";
+  } else {
+    buttonText = isLikeMode ? "다음 단계로" : "MBTI 입력하기";
+  }
 
   // 모드별 CSS 변수 동적 설정 (like: 네온 시안, dislike: 네온 엠버)
   const activeColor = isLikeMode ? "#66fcf1" : "#ff9f1c";
