@@ -8,79 +8,161 @@ import MvtiResultPage from './pages/MvtiResultPage';
 import DashboardPage from './pages/DashboardPage';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useReactions } from './hooks/useReactions';
+import moviesData from './data/movies.json';
 
 /**
  * 온보딩 플로우를 관장하는 서브 컴포넌트
  */
 function OnboardingFlow({ profile, setProfile }) {
   const navigate = useNavigate();
-  const { addReaction } = useReactions();
+  const { reactions, addReaction, deleteReaction, getReactionByMovieId } = useReactions();
+  
   const [step, setStep] = useState('landing'); // 'landing' | 'dislike-selection' | 'onboarding'
   const [selectedLikeMovies, setSelectedLikeMovies] = useState([]);
   const [selectedDislikeMovies, setSelectedDislikeMovies] = useState([]);
   const [mbti, setMbti] = useState(null);
 
+  // 온보딩 완료 사용자인 경우, 로컬 reactions 상태와 동기화
+  useEffect(() => {
+    if (profile.onboardingCompleted) {
+      const liked = [];
+      const disliked = [];
+      reactions.forEach((r) => {
+        const movie = moviesData.find((m) => m.id === r.movieId);
+        if (movie) {
+          if (r.sentiment === 'like') liked.push(movie);
+          else if (r.sentiment === 'dislike') disliked.push(movie);
+        }
+      });
+      setSelectedLikeMovies(liked);
+      setSelectedDislikeMovies(disliked);
+      if (profile.mbti) {
+        setMbti(profile.mbti);
+      }
+    }
+  }, [reactions, profile.onboardingCompleted, profile.mbti]);
+
   // 좋아하는 영화 선택 핸들러
   const handleLikeMovieClick = (movie) => {
-    setSelectedLikeMovies((prev) => {
-      const exists = prev.some((m) => m.id === movie.id);
-      if (exists) {
-        return prev.filter((m) => m.id !== movie.id);
+    if (profile.onboardingCompleted) {
+      // 온보딩 완료 회원은 즉시 저장소에 반영
+      const existing = getReactionByMovieId(movie.id);
+      if (existing) {
+        if (existing.sentiment === 'like') {
+          deleteReaction(existing.id);
+        } else {
+          alert(`⚠️ 이 영화는 이미 '나는 별로' 상태로 등록되어 있습니다. 변경하려면 취향 기록 페이지나 해당 카드에서 관리해 주세요.`);
+        }
       } else {
-        return [...prev, movie];
+        addReaction({
+          movieId: movie.id,
+          sentiment: 'like',
+          strength: 2,
+          watchStatus: 'seen',
+          note: '추가 영화 선택에서 등록'
+        });
       }
-    });
+    } else {
+      // 최초 가입/온보딩 게스트 상태
+      setSelectedLikeMovies((prev) => {
+        const exists = prev.some((m) => m.id === movie.id);
+        if (exists) {
+          return prev.filter((m) => m.id !== movie.id);
+        } else {
+          return [...prev, movie];
+        }
+      });
+    }
   };
 
   const handleRemoveLikeMovie = (movieId) => {
-    setSelectedLikeMovies((prev) => prev.filter((m) => m.id !== movieId));
+    if (profile.onboardingCompleted) {
+      const existing = getReactionByMovieId(movieId);
+      if (existing) deleteReaction(existing.id);
+    } else {
+      setSelectedLikeMovies((prev) => prev.filter((m) => m.id !== movieId));
+    }
   };
 
   // 싫어하는 영화 선택 핸들러
   const handleDislikeMovieClick = (movie) => {
-    const isAlreadyLiked = selectedLikeMovies.some((m) => m.id === movie.id);
-    if (isAlreadyLiked) {
-      alert(`⚠️ '${movie.titleKo}' 영화는 이미 1단계에서 '좋아하는 영화'로 선택하셨습니다. 다른 영화를 선택해 주세요!`);
-      return;
-    }
-
-    setSelectedDislikeMovies((prev) => {
-      const exists = prev.some((m) => m.id === movie.id);
-      if (exists) {
-        return prev.filter((m) => m.id !== movie.id);
+    if (profile.onboardingCompleted) {
+      // 온보딩 완료 회원은 즉시 저장소에 반영
+      const existing = getReactionByMovieId(movie.id);
+      if (existing) {
+        if (existing.sentiment === 'dislike') {
+          deleteReaction(existing.id);
+        } else {
+          alert(`⚠️ 이 영화는 이미 '내 취향' 상태로 등록되어 있습니다. 변경하려면 취향 기록 페이지나 해당 카드에서 관리해 주세요.`);
+        }
       } else {
-        return [...prev, movie];
+        addReaction({
+          movieId: movie.id,
+          sentiment: 'dislike',
+          strength: 2,
+          watchStatus: 'seen',
+          note: '추가 영화 선택에서 등록'
+        });
       }
-    });
+    } else {
+      // 최초 가입/온보딩 게스트 상태
+      const isAlreadyLiked = selectedLikeMovies.some((m) => m.id === movie.id);
+      if (isAlreadyLiked) {
+        alert(`⚠️ '${movie.titleKo}' 영화는 이미 1단계에서 '좋아하는 영화'로 선택하셨습니다. 다른 영화를 선택해 주세요!`);
+        return;
+      }
+
+      setSelectedDislikeMovies((prev) => {
+        const exists = prev.some((m) => m.id === movie.id);
+        if (exists) {
+          return prev.filter((m) => m.id !== movie.id);
+        } else {
+          return [...prev, movie];
+        }
+      });
+    }
   };
 
   const handleRemoveDislikeMovie = (movieId) => {
-    setSelectedDislikeMovies((prev) => prev.filter((m) => m.id !== movieId));
+    if (profile.onboardingCompleted) {
+      const existing = getReactionByMovieId(movieId);
+      if (existing) deleteReaction(existing.id);
+    } else {
+      setSelectedDislikeMovies((prev) => prev.filter((m) => m.id !== movieId));
+    }
   };
 
   const goToDislikeStep = () => setStep('dislike-selection');
-  const goToMbtiStep = () => setStep('onboarding');
+  
+  const goToNextOrComplete = () => {
+    if (profile.onboardingCompleted) {
+      // 이미 온보딩 완료된 회원은 바로 진단서로 이동
+      navigate('/result');
+    } else {
+      setStep('onboarding');
+    }
+  };
 
-  // 온보딩 완료 및 데이터 일괄 적재 핸들러
+  // 온보딩 완료 및 데이터 일괄 적재 핸들러 (최초 가입용)
   const handleCompleteOnboarding = () => {
     try {
-      // A. 선택한 선호 영화 등록 (Strength: 3으로 등록하여 강한 선호 표출)
+      // A. 선택한 선호 영화 등록 (기본 강도 2로 저장)
       selectedLikeMovies.forEach((movie) => {
         addReaction({
           movieId: movie.id,
           sentiment: 'like',
-          strength: 3,
+          strength: 2,
           watchStatus: 'seen',
           note: '온보딩 단계를 통해 선택함'
         });
       });
 
-      // B. 선택한 불호 영화 등록 (Strength: 3으로 등록하여 강한 불호 표출)
+      // B. 선택한 불호 영화 등록 (기본 강도 2로 저장)
       selectedDislikeMovies.forEach((movie) => {
         addReaction({
           movieId: movie.id,
           sentiment: 'dislike',
-          strength: 3,
+          strength: 2,
           watchStatus: 'seen',
           note: '온보딩 단계를 통해 선택함'
         });
@@ -110,14 +192,15 @@ function OnboardingFlow({ profile, setProfile }) {
           
           <DiagonalPosterFlow 
             onMovieClick={handleLikeMovieClick} 
-            selectedMovieIds={selectedLikeMovies.map(m => m.id)} 
+            selectedMovieIds={selectedLikeMovies.map(m => m.id)}
+            reactions={reactions}
           />
           
           <SelectionTray 
             selectedMovies={selectedLikeMovies} 
             onRemoveMovie={handleRemoveLikeMovie} 
             onSubmit={goToDislikeStep}
-            minRequired={3}
+            minRequired={profile.onboardingCompleted ? 0 : 3}
             mode="like"
           />
         </div>
@@ -127,19 +210,20 @@ function OnboardingFlow({ profile, setProfile }) {
         <div className="landing-view">
           <div className="landing-hero select-dislike-hero">
             <h2 className="amber-glow">남들은 명작이라 하지만, 나는 굳이 싫은 영화는?</h2>
-            <p>대다수가 극찬하지만, 당신은 독특하게 불호(비선호)를 느끼는 영화를 3편 이상 골라보세요.</p>
+            <p>대다수가 극찬하지만, 당신은 독특하게 불호(비선호)를 느끼는 영화를 골라보세요.</p>
           </div>
           
           <DiagonalPosterFlow 
             onMovieClick={handleDislikeMovieClick} 
-            selectedMovieIds={selectedDislikeMovies.map(m => m.id)} 
+            selectedMovieIds={selectedDislikeMovies.map(m => m.id)}
+            reactions={reactions}
           />
           
           <SelectionTray 
             selectedMovies={selectedDislikeMovies} 
             onRemoveMovie={handleRemoveDislikeMovie} 
-            onSubmit={goToMbtiStep}
-            minRequired={3}
+            onSubmit={goToNextOrComplete}
+            minRequired={profile.onboardingCompleted ? 0 : 3}
             mode="dislike"
           />
           <button className="btn-absolute-back" onClick={() => setStep('landing')}>
@@ -172,15 +256,7 @@ function OnboardingFlow({ profile, setProfile }) {
  * 루트 경로("/")에서 온보딩 분기를 처리해 주는 컴포넌트
  */
 function HomeRouteHandler({ profile, setProfile }) {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (profile.onboardingCompleted) {
-      // 온보딩이 이미 되어 있으면 대시보드로 이동
-      navigate('/dashboard');
-    }
-  }, [profile.onboardingCompleted, navigate]);
-
+  // 온보딩 완료 사용자도 리다이렉트하지 않고 OnboardingFlow(추가 선택 모드)로 진입할 수 있도록 개선
   return <OnboardingFlow profile={profile} setProfile={setProfile} />;
 }
 
@@ -206,19 +282,25 @@ function NavigationHeader({ profile }) {
         <p className="subtitle">Movie Taste Indicator</p>
       </div>
 
-      {profile.onboardingCompleted && (
-        <nav className="header-nav">
-          <Link to="/dashboard" className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}>
-            🚀 오늘의 추천
-          </Link>
-          <Link to="/my-taste" className={`nav-link ${location.pathname === '/my-taste' ? 'active' : ''}`}>
-            ✍️ 취향 기록 (CRUD)
-          </Link>
-          <Link to="/result" className={`nav-link ${location.pathname === '/result' ? 'active' : ''}`}>
-            🔬 취향 진단서
-          </Link>
-        </nav>
-      )}
+      <nav className="header-nav">
+        {/* 온보딩 여부에 상관없이 홈 링크 노출 (온보딩 완료 시 '영화 더 고르기' 텍스트 적용) */}
+        <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
+          {profile.onboardingCompleted ? '🎬 영화 더 고르기' : '🏠 홈'}
+        </Link>
+        {profile.onboardingCompleted && (
+          <>
+            <Link to="/dashboard" className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}>
+              🚀 오늘의 추천
+            </Link>
+            <Link to="/my-taste" className={`nav-link ${location.pathname === '/my-taste' ? 'active' : ''}`}>
+              ✍️ 취향 기록 (CRUD)
+            </Link>
+            <Link to="/result" className={`nav-link ${location.pathname === '/result' ? 'active' : ''}`}>
+              🔬 취향 진단서
+            </Link>
+          </>
+        )}
+      </nav>
     </header>
   );
 }
@@ -230,7 +312,7 @@ export default function App() {
   });
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="app-container">
         {/* 공통 상단 네비게이션 헤더 */}
         <NavigationHeader profile={profile} />
