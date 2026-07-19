@@ -126,6 +126,9 @@ npm.cmd run dev
 
 ## 7\. 폴더 및 파일 구조
 
+## 7. 폴더 및 파일 구조
+
+```plaintext
 프로젝트 폴더/
 ├─ README.md
 ├─ package.json
@@ -154,6 +157,7 @@ npm.cmd run dev
 │  │     ├─ ReactionCard.jsx        # 개별 영화 기록 카드
 │  │     ├─ ReactionForm.jsx        # 실시간 타이핑 매칭 추가 폼
 │  │     └─ ReactionList.jsx        # 분류 탭 필터/검색/정렬 컨트롤
+```
 │  ├─ data/
 │  │  └─ movies.json           # 엄선된 96편의 대조 영화 원본셋
 │  ├─ hooks/
