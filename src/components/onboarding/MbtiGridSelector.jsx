@@ -13,8 +13,15 @@ const MBTI_LIST = [
  * 16개 MBTI 유형 그리드 선택 컴포넌트 (약식 진단 테스트 모달 탑재)
  * @param {object} props { value, onChange }
  */
-export default function MbtiGridSelector({ value, onChange }) {
+export default function MbtiGridSelector({ value, onChange, onTestModeChange }) {
   const [isTesting, setIsTesting] = useState(false);
+
+  const toggleTesting = (boolVal) => {
+    setIsTesting(boolVal);
+    if (onTestModeChange) {
+      onTestModeChange(boolVal);
+    }
+  };
 
   const handleSelectChange = (e) => {
     const val = e.target.value;
@@ -23,7 +30,7 @@ export default function MbtiGridSelector({ value, onChange }) {
 
   const handleTestComplete = (calculatedMbti) => {
     onChange(calculatedMbti);
-    setIsTesting(false);
+    toggleTesting(false);
   };
 
   // 약식 진단 모드 렌더링 분기
@@ -34,7 +41,7 @@ export default function MbtiGridSelector({ value, onChange }) {
         <p className="selector-desc">4가지 질문을 통해 당신의 잠재적 성격 유형을 분석해 봅니다.</p>
         <MbtiMiniTest 
           onComplete={handleTestComplete} 
-          onCancel={() => setIsTesting(false)} 
+          onCancel={() => toggleTesting(false)} 
         />
       </div>
     );
@@ -88,7 +95,7 @@ export default function MbtiGridSelector({ value, onChange }) {
         <button
           type="button"
           className="btn-trigger-test"
-          onClick={() => setIsTesting(true)}
+          onClick={() => toggleTesting(true)}
         >
           💡 내 MBTI를 잘 모릅니다 (약식 테스트로 알아보기)
         </button>
@@ -102,7 +109,7 @@ export default function MbtiGridSelector({ value, onChange }) {
           onClick={() => onChange(null)}
           aria-pressed={value === null}
         >
-          테스트 없이 분석하기
+          MBTI 선택 건너뛰기 (취향만 분석)
         </button>
       </div>
 

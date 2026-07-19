@@ -21,6 +21,7 @@ function OnboardingFlow({ profile, setProfile }) {
   const [selectedLikeMovies, setSelectedLikeMovies] = useState([]);
   const [selectedDislikeMovies, setSelectedDislikeMovies] = useState([]);
   const [mbti, setMbti] = useState(null);
+  const [isMbtiTesting, setIsMbtiTesting] = useState(false);
 
   // 온보딩 완료 사용자인 경우, 로컬 reactions 상태와 동기화
   useEffect(() => {
@@ -234,18 +235,24 @@ function OnboardingFlow({ profile, setProfile }) {
 
       {step === 'onboarding' && (
         <div className="onboarding-view glass-panel">
-          <MbtiGridSelector value={mbti} onChange={(selected) => setMbti(selected)} />
-          <div className="onboarding-actions">
-            <button className="btn-back" onClick={() => setStep('dislike-selection')}>
-              이전 단계로
-            </button>
-            <button 
-              className="btn-next" 
-              onClick={handleCompleteOnboarding}
-            >
-              결과 분석하기
-            </button>
-          </div>
+          <MbtiGridSelector 
+            value={mbti} 
+            onChange={(selected) => setMbti(selected)} 
+            onTestModeChange={setIsMbtiTesting}
+          />
+          {!isMbtiTesting && (
+            <div className="onboarding-actions">
+              <button className="btn-back" onClick={() => setStep('dislike-selection')}>
+                이전 단계로
+              </button>
+              <button 
+                className="btn-next" 
+                onClick={handleCompleteOnboarding}
+              >
+                결과 분석하기
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
