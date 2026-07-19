@@ -2,31 +2,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* 테마 컬러 정의 (다크 모드 & 네온 포인트 HSL) */
-  --bg-color: #0b0c10;
-  --bg-card: rgba(31, 40, 51, 0.7);
-  --bg-card-hover: rgba(31, 40, 51, 0.95);
-  
-  --primary-color: #66fcf1; /* 네온 시안 */
-  --primary-glow: rgba(102, 252, 241, 0.4);
-  
-  --secondary-color: #8a2be2; /* 네온 바이올렛 */
-  --secondary-glow: rgba(138, 43, 226, 0.4);
-  
-  --text-main: #f5f5f7;
-  --text-muted: #c5a1ff; /* 보조 연한 보라 */
-  --text-desc: #abb2bf;
-  
-  --border-color: rgba(102, 252, 241, 0.15);
-  --border-color-active: rgba(102, 252, 241, 0.6);
-  
-  --danger-color: #ff4d4d;
-  --warning-color: #ff9f1c; /* 엠버 오렌지 */
-  --success-color: #2ecc71;
-  
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* 배경 계층 — 깊이감 있는 다크 레이어 */
+  --bg-color: #0a0b0f;
+  --bg-surface: #111318;
+  --bg-elevated: #1a1c23;
+  --bg-card: rgba(26, 28, 35, 0.85);
+  --bg-card-hover: rgba(26, 28, 35, 0.95);
+
+  /* 포인트 컬러 — 차분한 민트 & 웜 악센트 */
+  --primary-color: #5de4d8;
+  --primary-muted: rgba(93, 228, 216, 0.12);
+  --primary-glow: rgba(93, 228, 216, 0.25);
+
+  --accent-warm: #e8a87c;
+  --accent-warm-muted: rgba(232, 168, 124, 0.12);
+  --accent-rose: #e06b8d;
+  --accent-rose-muted: rgba(224, 107, 141, 0.12);
+
+  /* 텍스트 계층 */
+  --text-main: #eaedf3;
+  --text-secondary: #a0a8b8;
+  --text-muted: #636b7e;
+
+  /* 보더 */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-active: rgba(93, 228, 216, 0.35);
+
+  /* 시멘틱 컬러 */
+  --danger-color: #e55a6f;
+  --warning-color: #e8a87c;
+  --success-color: #5de4d8;
+
+  --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --font-title: 'Outfit', 'Inter', -apple-system, sans-serif;
   --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* 레이아웃 */
+  --page-max-width: 960px;
+  --page-padding: 24px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
 }
 
 * {
@@ -40,44 +57,55 @@ body {
   color: var(--text-main);
   font-family: var(--font-body);
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-title);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
 }
 
-/* 글래스모피즘 효과 클래스 */
+/* 카드 표면 — 글래스 대신 솔리드 서피스 */
+.surface-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-smooth);
+}
+
+.surface-card:hover {
+  border-color: var(--border-default);
+}
+
+/* 호환용 glass-panel (기존 코드 호환) */
 .glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
   transition: var(--transition-smooth);
 }
 
 .glass-panel:hover {
-  border-color: var(--border-color-active);
-  box-shadow: 0 8px 32px 0 var(--primary-glow);
+  border-color: var(--border-default);
 }
 
 /* 스크롤바 커스텀 */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-color);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f2833;
-  border-radius: 4px;
+  background: var(--bg-elevated);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-color);
+  background: var(--text-muted);
 }
 
 /* 무한 롤링 포스터 레이아웃 전용 CSS */
@@ -86,9 +114,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 120%;
   left: -10%;
   overflow: hidden;
-  transform: skewY(-5deg); /* 사선 레이아웃 효과 */
+  transform: skewY(-5deg);
   padding: 40px 0;
-  background: linear-gradient(180deg, rgba(11,12,16,0.9) 0%, rgba(11,12,16,0.3) 50%, rgba(11,12,16,0.9) 100%);
+  background: linear-gradient(180deg, rgba(10,11,15,0.95) 0%, rgba(10,11,15,0.2) 50%, rgba(10,11,15,0.95) 100%);
 }
 
 .poster-row {
@@ -98,40 +126,28 @@ h1, h2, h3, h4, h5, h6 {
   padding: 10px 0;
 }
 
-/* 왼쪽으로 흘러가는 라인 */
 .poster-row.flow-left {
   animation: scroll-left 45s linear infinite;
 }
 
-/* 오른쪽으로 흘러가는 라인 */
 .poster-row.flow-right {
   animation: scroll-right 45s linear infinite;
 }
 
-/* hover 시 일시정지 효과 */
 .poster-flow-container:hover .poster-row {
   animation-play-state: paused;
 }
 
 @keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-33.33%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
 }
 
 @keyframes scroll-right {
-  0% {
-    transform: translateX(-33.33%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(-33.33%); }
+  100% { transform: translateX(0); }
 }
 
-/* prefers-reduced-motion 스펙 대응 */
 @media (prefers-reduced-motion: reduce) {
   .poster-row.flow-left,
   .poster-row.flow-right {
@@ -139,16 +155,16 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* 상단 헤더 네비게이션 레이아웃 및 링킹 디자인 */
+/* ─── 상단 헤더 네비게이션 ─── */
 .app-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   width: 100%;
-  max-width: 1200px;
-  margin: 30px auto 10px auto;
-  padding: 0 20px;
+  max-width: var(--page-max-width);
+  margin: 24px auto 0 auto;
+  padding: 0 var(--page-padding);
   z-index: 100;
 }
 
@@ -160,53 +176,164 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.header-logo-section .logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.header-logo-section .subtitle {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
 .header-nav {
   display: flex;
-  gap: 8px;
-  background: rgba(31, 40, 51, 0.5);
-  padding: 6px;
-  border-radius: 30px;
-  border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
+  gap: 4px;
+  background: var(--bg-surface);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
 }
 
 .nav-link {
   text-decoration: none;
-  font-family: var(--font-title);
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--text-desc);
-  padding: 8px 18px;
-  border-radius: 20px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: 7px 14px;
+  border-radius: 8px;
   transition: var(--transition-smooth);
 }
 
 .nav-link:hover {
-  color: #fff;
+  color: var(--text-main);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .nav-link.active {
-  background: var(--primary-color);
-  color: var(--bg-color);
-  box-shadow: 0 0 12px var(--primary-glow);
+  background: var(--bg-elevated);
+  color: var(--text-main);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-/* 폼, 레이아웃 및 기타 공통 버튼 스타일 */
+/* ─── 앱 메인 콘텐츠 영역 ─── */
+.app-main {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+}
+
+/* ─── 공통 버튼 스타일 ─── */
 .btn-primary {
-  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  background: var(--primary-color);
   border: none;
   color: var(--bg-color);
-  padding: 12px 32px;
-  border-radius: 10px;
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  font-family: var(--font-title);
-  font-weight: 700;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
   transition: var(--transition-smooth);
-  box-shadow: 0 4px 15px var(--primary-glow);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--primary-glow);
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-main);
+}
+
+/* ─── 공통 유틸리티 ─── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { transform: translate(-50%, -16px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* ─── 온보딩 액션 및 MBTI 선택 버튼 스타일 ─── */
+.onboarding-view {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.onboarding-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.onboarding-actions .btn-back {
+  background: transparent;
+  border: 1px solid var(--accent-warm);
+  color: var(--accent-warm);
+  padding: 14px 36px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.onboarding-actions .btn-back:hover {
+  background: var(--accent-warm-muted);
+  box-shadow: 0 0 15px var(--accent-warm-muted);
+  transform: translateY(-2px);
+}
+
+.onboarding-actions .btn-next {
+  background: var(--primary-color);
+  border: none;
+  color: var(--bg-color);
+  padding: 14px 54px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+
+.onboarding-actions .btn-next:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px var(--primary-color);
+}
+
